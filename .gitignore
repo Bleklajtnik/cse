@@ -1,0 +1,21 @@
+# Foldery konfiguracyjne narzedzi AI / edytorow
+.agent/
+.agents/
+.claude/
+.codebuddy/
+.codex/
+.continue/
+.cursor/
+.gemini/
+.kiro/
+.opencode/
+.qoder/
+.roo/
+.trae/
+.windsurf/
+skills-lock.json
+
+# System
+.DS_Store
+Thumbs.db
+desktop.ini
