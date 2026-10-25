@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rozmowa zarezerwowana – Cambridge School of English</title>
+    <meta name="description" content="Twoja rozmowa kwalifikacyjna jest zarezerwowana. Zobacz, co dalej." />
+    <!-- Strona po rezerwacji: nie indeksujemy jej w Google (liczy wyłącznie zapisy) -->
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { navy: '#1a2744', navylt: '#243260', navydark: '#111b33', gold: '#c9a84c', goldlt: '#d9bc72' },
+            fontFamily: { serif: ['Playfair Display', 'Georgia', 'serif'], sans: ['Inter', 'system-ui', 'sans-serif'] },
+          },
+        },
+      };
+    </script>
+    <!-- Piksel Facebooka (Meta) WYŁĄCZONY - tak jak na stronie głównej. Przy starcie reklam włączyć razem z banerem
+         zgody na ciasteczka. Tutaj dodatkowo zdarzenie 'Schedule' = jedna rezerwacja rozmowy.
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1050306314003867');
+      fbq('track', 'PageView');
+      fbq('track', 'Schedule');
+    </script>
+    koniec wyłączonego piksela Facebooka -->
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background: #fff;
+        color: #1a2744;
+        margin: 0;
+      }
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.55s ease,
+          transform 0.55s ease;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .hero-bg {
+        background:
+          linear-gradient(135deg, rgba(26, 39, 68, 0.55) 0%, rgba(36, 50, 96, 0.55) 55%, rgba(28, 53, 88, 0.55) 100%),
+          url('assets/igitlo.jpg') center center / cover no-repeat;
+      }
+      .hero-section {
+        min-height: 100dvh;
+      }
+      /* Tło sekcji rezerwacji: szeroki pasek z hero na całą szerokość u dołu (panorama Londyn – Nowy Jork),
+         reszta wypełniona tym samym granatem co tło zdjęcia */
+      .kontakt-bg {
+        background:
+          linear-gradient(135deg, rgba(26, 39, 68, 0.55) 0%, rgba(36, 50, 96, 0.55) 55%, rgba(28, 53, 88, 0.55) 100%),
+          url('assets/igitlo.jpg') center bottom / 100% auto no-repeat,
+          #272852;
+      }
+      /* Historia twórcy: zdjęcie jako naklejka + dymek z podpisem */
+      .founder-sticker {
+        position: relative;
+        width: min(380px, 84vw);
+        margin-bottom: 56px;
+      }
+      .founder-sticker img {
+        display: block;
+        width: 100%;
+        height: auto;
+        transform: rotate(-4deg);
+        /* biały kontur naklejki wokół wyciętej sylwetki + cień */
+        filter: drop-shadow(5px 0 0 #fff) drop-shadow(-5px 0 0 #fff) drop-shadow(0 5px 0 #fff)
+          drop-shadow(0 -5px 0 #fff) drop-shadow(0 16px 24px rgba(0, 0, 0, 0.45));
+      }
+      .founder-bubble {
+        position: absolute;
+        left: 52%;
+        bottom: -48px;
+        background: #fff;
+        border-radius: 16px;
+        padding: 12px 18px;
+        white-space: nowrap;
+        transform: rotate(2deg);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+      }
+      .founder-bubble::before {
+        content: '';
+        position: absolute;
+        left: 22px;
+        top: -10px;
+        border: 11px solid transparent;
+        border-top: 0;
+        border-bottom-color: #fff;
+      }
+      @media (max-width: 640px) {
+        .founder-bubble {
+          left: 50%;
+          transform: translateX(-50%) rotate(2deg);
+        }
+        .founder-bubble::before {
+          left: calc(50% - 11px);
+        }
+      }
+      @media (min-width: 1024px) {
+        .hero-section {
+          min-height: 600px;
+        }
+      }
+      .hero-flagi-desktop {
+        max-height: clamp(320px, 38vw, 520px);
+        right: 2%;
+      }
+      @media (min-width: 1280px) {
+        .hero-flagi-desktop {
+          max-height: 520px;
+          right: 15%;
+          transform: translateX(90px); /* przesunięcie w prawo tylko na szerokich ekranach (węższe ucinałyby flagę) */
+        }
+      }
+      .badge-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(201, 168, 76, 0.15);
+        border: 1px solid rgba(201, 168, 76, 0.4);
+        color: #c9a84c;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 5px 14px;
+        border-radius: 999px;
+      }
+      .btn-gold {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #c9a84c;
+        color: #1a2744;
+        font-weight: 800;
+        border-radius: 12px;
+        padding: 15px 28px;
+        font-size: 0.95rem;
+        transition: all 0.2s;
+        box-shadow: 0 6px 24px rgba(201, 168, 76, 0.4);
+      }
+      .btn-gold:hover {
+        background: #d9bc72;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 32px rgba(201, 168, 76, 0.55);
+      }
+      .btn-ghost-w {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: transparent;
+        color: #fff;
+        font-weight: 600;
+        border: 2px solid rgba(255, 255, 255, 0.25);
+        border-radius: 12px;
+        padding: 13px 22px;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+      }
+      .btn-ghost-w:hover {
+        border-color: rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.07);
+      }
+      .btn-navy {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #1a2744;
+        color: #fff;
+        font-weight: 700;
+        border-radius: 12px;
+        padding: 14px 26px;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+        box-shadow: 0 4px 20px rgba(26, 39, 68, 0.25);
+      }
+      .btn-navy:hover {
+        background: #243260;
+        transform: translateY(-2px);
+      }
+      .feat-card {
+        background: #fff;
+        border: 1.5px solid #f0ece3;
+        border-radius: 20px;
+        padding: 28px 22px;
+        text-align: center;
+        transition: all 0.25s;
+        box-shadow: 0 2px 12px rgba(26, 39, 68, 0.05);
+      }
+      .feat-card:hover {
+        border-color: rgba(201, 168, 76, 0.4);
+        box-shadow: 0 12px 36px rgba(26, 39, 68, 0.1);
+        transform: translateY(-4px);
+      }
+      .icon-wrap {
+        width: 64px;
+        height: 64px;
+        background: #f0f4ff;
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+      }
+      .review-card {
+        background: #fff;
+        border: 1.5px solid #f0ece3;
+        border-radius: 20px;
+        padding: 26px;
+        box-shadow: 0 2px 8px rgba(26, 39, 68, 0.05);
+      }
+      .section-lbl {
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #c9a84c;
+        display: block;
+        margin-bottom: 6px;
+      }
+      .acc-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+      }
+      .acc-content.open {
+        max-height: 500px;
+      }
+      .acc-icon {
+        transition: transform 0.3s;
+      }
+      .acc-item.open .acc-icon {
+        transform: rotate(45deg);
+      }
+      .step-circle {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: #1a2744;
+        color: #c9a84c;
+        font-weight: 800;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .seal {
+        width: 128px;
+        height: 128px;
+        border-radius: 50%;
+        background: conic-gradient(#c9a84c, #d9bc72 50%, #c9a84c);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 40px rgba(201, 168, 76, 0.5);
+        flex-shrink: 0;
+        border: 4px solid #fff;
+      }
+      .star {
+        display: inline-block;
+        color: #c9a84c;
+      }
+      .chip {
+        background: #fff;
+        border-radius: 12px;
+        padding: 10px 14px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky top-0 z-50 bg-white border-b border-slate-100 shadow-sm">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="assets/logo.png" alt="CSE" class="h-9 w-9 rounded-xl" onerror="this.style.display = 'none'" />
+          <div class="leading-tight">
+            <p class="font-bold text-navy text-sm">Cambridge School of English</p>
+            <p class="text-gold text-xs font-medium">Program Online</p>
+          </div>
+        </a>
+        <a href="index.html" class="text-sm font-semibold text-slate-500 hover:text-navy transition-colors"
+          >← Strona główna</a
+        >
+      </div>
+    </header>
+
+    <!-- POTWIERDZENIE + 5 KROKÓW -->
+    <section class="kontakt-bg py-16 sm:py-20 px-4 sm:px-6">
+      <div class="max-w-5xl mx-auto text-center">
+        <div class="w-14 h-14 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-5">
+          <svg class="w-7 h-7 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h1 class="font-serif text-3xl sm:text-5xl font-bold text-white mb-4">
+          <span id="ty-hello">Gotowe!</span> Twoja rozmowa<br class="hidden sm:block" />
+          jest zarezerwowana
+        </h1>
+        <p id="ty-when" class="hidden text-gold font-semibold text-lg mb-3"></p>
+        <p class="text-white/60 leading-relaxed max-w-xl mx-auto mb-12">
+          Zanim porozmawiamy, został jeszcze jeden ważny krok. Zajmie Ci kilka minut, a rozmowa będzie dzięki niemu
+          dużo bardziej konkretna.
+        </p>
+
+        <div class="bg-navy/85 backdrop-blur-sm border border-white/15 rounded-3xl p-6 sm:p-10 text-left">
+          <div class="flex items-center justify-between mb-6">
+            <p class="text-white font-semibold">Twoja droga do mówienia</p>
+            <p class="text-gold text-sm font-bold">Krok 2 z 5</p>
+          </div>
+          <div class="h-1.5 bg-white/10 rounded-full mb-8 overflow-hidden">
+            <div class="h-full bg-gold rounded-full" style="width: 40%"></div>
+          </div>
+          <ol class="flex flex-col lg:flex-row gap-6 lg:gap-4">
+          <li class="relative flex lg:flex-col items-start lg:items-center gap-4 lg:gap-3 lg:text-center lg:flex-1">
+            <span class="w-10 h-10 rounded-full bg-gold text-navy flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg></span>
+            <div>
+              <p class="font-semibold text-sm text-white/60 line-through decoration-gold/60">Rezerwacja rozmowy</p>
+              <p class="text-xs mt-1 leading-relaxed text-white/40">Termin zapisany, potwierdzenie jest na Twoim mailu.</p>
+              
+            </div>
+          </li>
+          <li class="relative flex lg:flex-col items-start lg:items-center gap-4 lg:gap-3 lg:text-center lg:flex-1">
+            <span class="w-10 h-10 rounded-full border-2 border-gold bg-gold/15 text-gold font-bold flex items-center justify-center flex-shrink-0 ring-4 ring-gold/20">2</span>
+            <div>
+              <p class="font-semibold text-sm text-white">Obejrzyj film</p>
+              <p class="text-xs mt-1 leading-relaxed text-white/70">Kilka minut, które sprawią, że rozmowa będzie konkretna.</p>
+              <span class="inline-block mt-2 lg:mt-3 bg-gold text-navy text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full">Jesteś tutaj</span>
+            </div>
+          </li>
+          <li class="relative flex lg:flex-col items-start lg:items-center gap-4 lg:gap-3 lg:text-center lg:flex-1">
+            <span class="w-10 h-10 rounded-full border border-white/20 text-white/40 font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <div>
+              <p class="font-semibold text-sm text-white/50">Rozmowa z Markiem</p>
+              <p class="text-xs mt-1 leading-relaxed text-white/35">20 minut przez telefon. Sprawdzimy, gdzie się blokujesz.</p>
+              
+            </div>
+          </li>
+          <li class="relative flex lg:flex-col items-start lg:items-center gap-4 lg:gap-3 lg:text-center lg:flex-1">
+            <span class="w-10 h-10 rounded-full border border-white/20 text-white/40 font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <div>
+              <p class="font-semibold text-sm text-white/50">Dobór grupy i pakietu</p>
+              <p class="text-xs mt-1 leading-relaxed text-white/35">Dopasujemy Cię do grupy maks. 3 osób na Twoim poziomie.</p>
+              
+            </div>
+          </li>
+          <li class="relative flex lg:flex-col items-start lg:items-center gap-4 lg:gap-3 lg:text-center lg:flex-1">
+            <span class="w-10 h-10 rounded-full border border-white/20 text-white/40 font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <div>
+              <p class="font-semibold text-sm text-white/50">Pierwsza sesja</p>
+              <p class="text-xs mt-1 leading-relaxed text-white/35">Zaczynasz mówić - od pierwszych zajęć.</p>
+              
+            </div>
+          </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- KROK 2: FILM -->
+    <section id="film" class="bg-white py-16 sm:py-20 px-4 sm:px-6">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-8">
+          <span class="section-lbl">Krok 2 z 5</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navy mb-3">Obejrzyj przed rozmową</h2>
+          <p class="text-slate-500 leading-relaxed">
+            Zobacz, jak wyglądają efekty u osób, które były dokładnie w tym miejscu co Ty.
+          </p>
+        </div>
+        <!-- FILM: podmień src na docelowy film (np. powitanie od Marka) -->
+        <div class="rounded-3xl overflow-hidden shadow-lg border border-gold/20 bg-navy">
+          <video controls preload="metadata" playsinline class="w-full block">
+            <source src="assets/opinia.mp4" type="video/mp4" />
+            Twoja przeglądarka nie obsługuje odtwarzacza wideo.
+          </video>
+        </div>
+
+        <div class="mt-12 bg-slate-50 rounded-3xl p-6 sm:p-8">
+          <h3 class="font-serif text-xl font-bold text-navy mb-4">Jak przygotować się do rozmowy</h3>
+          <ul class="space-y-3 text-slate-600 text-sm leading-relaxed">
+            <li class="flex gap-3">
+              <span class="text-gold font-bold">1.</span>
+              <span><strong class="text-navy">Odbierz telefon</strong> - zadzwonimy o umówionej godzinie. Numer może być
+                nieznany, więc warto go odebrać.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-gold font-bold">2.</span>
+              <span><strong class="text-navy">Znajdź 20 minut spokoju</strong> - bez pośpiechu i hałasu wokół.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-gold font-bold">3.</span>
+              <span><strong class="text-navy">Pomyśl o jednej sytuacji</strong>, w której chcesz swobodnie mówić po
+                angielsku - spotkanie, rozmowa o pracę, wyjazd. Od niej zaczniemy.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPINIE -->
+    <section class="bg-slate-50 py-16 sm:py-20 px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10">
+          <span class="section-lbl">Opinie kursantów</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navy">Oni też zaczynali od tej rozmowy</h2>
+          <p class="text-slate-500 mt-3">4.9 ★ w Google · ponad 5 000 kursantów od 1996 roku</p>
+        </div>
+        <div class="columns-1 md:columns-2 lg:columns-3 gap-4">
+          <blockquote class="break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">JK</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Joanna KK</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Wybrałam naukę online w tej szkole i to była świetna decyzja! Przez lata często pisałam po angielsku, ale brakowało mi płynności w mówieniu. Zajęcia z native speakerem dały mi bardzo dużo - łatwiej jest mi się porozumieć z klientami z całego świata. Przełamałam barierę w mówieniu - lekcje są ciekawe i angażujące. Gorąco polecam!"</p>
+          </blockquote>
+          <blockquote class="break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">KP</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Klaudia P.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Polecam wszystkim, którzy chcą czerpać przyjemność z nauki angielskiego i przełamać barierę w mówieniu. Lekcje w sympatycznej atmosferze, z doświadczoną kadrą, w tym native speaker - można się świetnie osłuchać z brytyjskim akcentem."</p>
+          </blockquote>
+          <blockquote class="break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">GC</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Grzegorz Ch.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Polecam naukę języka angielskiego w Cambridge School of English. Zajęcia prowadzone są profesjonalnie, bez stresu, a przekazywana wiedza z lekcji na lekcję sprawia, że bariera językowa znika."</p>
+          </blockquote>
+          <blockquote class="break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">MW</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Mariusz W.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Szczerze polecam. Nauczyciele wymagający i zarazem elastyczni - zarówno co do poziomu jak i tematyki lekcji. Jeśli masz problem z przełamaniem bariery językowej, to tym bardziej ta szkoła jest dla Ciebie."</p>
+          </blockquote>
+          <blockquote class="break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">DC</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Dorota C.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Jestem mile zaskoczona i usatysfakcjonowana wynikami mojej nauki. Dzięki tej szkole nawet osoby, które zaczynają od zera, szybko i łatwo przyswajają wiedzę. Myślę, że nie ma konkurencyjnej szkoły języka angielskiego na tak wysokim poziomie."</p>
+          </blockquote>
+          <blockquote class="break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">JG</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Joanna G.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Szkoła w 100% godna polecenia: małe grupy, zajęcia dostosowane do możliwości uczestników, miła atmosfera - ale największy plus za to, że podczas lekcji dużo się rozmawia w języku angielskim. POLECAM!"</p>
+          </blockquote>
+          <blockquote class="ty-more hidden break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">AB</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Aga B.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Jestem bardzo zadowolona z kursu! Zajęcia są prowadzone w ciekawy i interaktywny sposób. Atmosfera jest przyjazna, a grupy nieduże - co pozwala na indywidualne podejście. Widzę realne postępy w mojej znajomości języka i z przyjemnością uczęszczam na kolejne lekcje. Zdecydowanie polecam!"</p>
+          </blockquote>
+          <blockquote class="ty-more hidden break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">JP</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Jakub P.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Pan Marek jest wyjątkowo kompetentny, pełen pasji i zaangażowania. Jego metody nauczania są nowoczesne i skuteczne. Lekcje w małych grupach, różnorodne ćwiczenia i konwersacje sprawiły, że robiłem duże postępy w krótkim czasie. Serdecznie polecam!"</p>
+          </blockquote>
+          <blockquote class="ty-more hidden break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">MJ</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Magdalena J.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Świetne miejsce do nauki angielskiego! Lektorzy są prawdziwymi profesjonalistami - zawsze pomocni, cierpliwi i pełni pasji. Dzięki nim nauka to czysta przyjemność. Zdecydowanie polecam każdemu, kto chce skutecznie podnieść swoje umiejętności językowe!"</p>
+          </blockquote>
+          <blockquote class="ty-more hidden break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">JP</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Justyna P.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Do kursu dołączyłam w kwietniu. Zajęcia są w małych grupach i miłej atmosferze - nie jest to typowy kurs, dużo się rozmawia i ćwiczy umiejętności komunikacyjne. Wszystko w rozsądnej cenie. Widać że Pan Marek ma wieloletnie doświadczenie i potrafi przekazać wiedzę."</p>
+          </blockquote>
+          <blockquote class="ty-more hidden break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">KB</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Klaudia B.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Bardzo polecam naukę języka w tej szkole. Zajęcia prowadzone są różnorodnie, fajnie wyważone proporcje między gramatyką a konwersacjami, luźna i wspierająca atmosfera, kameralne grupy. Pan Marek to nauczyciel z powołania i pasji."</p>
+          </blockquote>
+          <blockquote class="ty-more hidden break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">MN</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Maria N.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Polecam bardzo szkołę językową Cambridge School of English. Odpowiednio dobrany poziom nauczania do możliwości, przyjemna atmosfera na zajęciach i motywujący prowadzący. Polecam każdemu kto chciałby zacząć lub kontynuować naukę języka!"</p>
+          </blockquote>
+          <blockquote class="ty-more hidden break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">MP</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Małgorzata P.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Szkoła językowa, do której uczęszczam, jest naprawdę wyjątkowa! Prowadzący są nie tylko kompetentni, ale również bardzo zaangażowani w swoją pracę, co sprawia, że nauka jest przyjemnością. Program nauczania jest dobrze zorganizowany, a materiały dydaktyczne na najwyższym poziomie. Gorąco polecam!"</p>
+          </blockquote>
+          <blockquote class="ty-more hidden break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">PW</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Paweł W.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Jestem zadowolony ze sposobu w jaki odbywają się lekcje. Miła i spokojna atmosfera, profesjonalni i cierpliwi prowadzący z bardzo dużym doświadczeniem. Zajęcia dostosowane do poziomu kursantów. Zdecydowanie polecam Cambridge School of English!"</p>
+          </blockquote>
+          <blockquote class="ty-more hidden break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">JK</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Joanna K.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Jestem bardzo zadowolona, że zdecydowałam się właśnie na tę szkołę językową. Widzę duży progres po roku nauki, a co najważniejsze lekcje odbywają się w naprawdę dobrej atmosferze. Polecam!"</p>
+          </blockquote>
+          <blockquote class="ty-more hidden break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">SP</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Szymon P.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Miła i przyjemna atmosfera podczas zajęć, dobrze dobrany poziom do umiejętności i właściwe podejście do kursantów. Zajęcia z Markiem w pełni profesjonalne, co daje efekty. Polecam!"</p>
+          </blockquote>
+          <blockquote class="ty-more hidden break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">MG</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Magdalena G.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Bardzo polecam. Profesjonalne podejście lektorów, zajęcia prowadzone w języku angielskim. Bardzo szybko można obyć się z językiem - rozmowy po angielsku przychodzą o wiele łatwiej. Polecam!"</p>
+          </blockquote>
+          <blockquote class="ty-more hidden break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">DP</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Daniel P.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Jestem zadowolony z kursu. Miałem już kilka podejść do różnych szkół i kursów. Tutaj największym plusem jest dobre podejście do praktycznego używania języka angielskiego oraz swobody korzystania z niego."</p>
+          </blockquote>
+          <blockquote class="ty-more hidden break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">PG</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Paweł G.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Bardzo przyjemnie prowadzone lekcje. Duża dawka wiedzy dobrze dobrana do poziomu studenta. Praca z Markiem daje efekty od samego początku. Świetne podejście! Polecam."</p>
+          </blockquote>
+          <blockquote class="ty-more hidden break-inside-avoid mb-4 bg-white rounded-2xl p-6 border border-gold/10 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 bg-gold/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="text-gold font-bold text-xs">MS</span>
+              </div>
+              <div>
+                <p class="font-semibold text-navy text-sm">Maciej Sz.</p>
+                <div class="text-gold text-xs">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed">"Polecam szkołę jak i lekcje z Panem Markiem. Marek jest nauczycielem z olbrzymim doświadczeniem i szerokich horyzontach, dzięki czemu nie brakuje tematów do rozmów."</p>
+          </blockquote>
+        </div>
+        <div class="text-center mt-6">
+          <button id="ty-more-btn" type="button" class="btn-gold">Pokaż więcej opinii</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-navydark border-t border-white/5 py-8 px-4">
+      <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <img src="assets/logo.png" alt="CSE" class="h-8 w-8 rounded-lg" onerror="this.style.display = 'none'" />
+          <div>
+            <p class="text-white/70 text-sm font-bold">Cambridge School of English</p>
+            <p class="text-white/30 text-xs">Program Online · cambridgeschool.pl</p>
+          </div>
+        </div>
+        <p class="text-white/20 text-xs">
+          © 2026 Cambridge School of English. Wszelkie prawa zastrzeżone. ·
+          <a href="polityka-prywatnosci.html" class="underline hover:text-white/60">Polityka prywatności</a>
+        </p>
+      </div>
+    </footer>
+    <script>
+      document.getElementById('ty-more-btn').addEventListener('click', function () {
+        document.querySelectorAll('.ty-more').forEach((el) => el.classList.remove('hidden'));
+        this.parentElement.remove();
+      });
+      // Imię i termin przekazuje formularz ze strony głównej (sessionStorage) - bez danych w adresie URL.
+      // Gdy ktoś wejdzie tu bezpośrednio, strona pokazuje wersję ogólną.
+      (function () {
+        let data = null;
+        try {
+          data = JSON.parse(sessionStorage.getItem('cse-booking'));
+        } catch (_) {}
+        if (!data) return;
+        if (data.firstName) document.getElementById('ty-hello').textContent = 'Super, ' + data.firstName + '!';
+        const start = data.startTime ? new Date(data.startTime) : null;
+        if (start && !isNaN(start)) {
+          const el = document.getElementById('ty-when');
+          el.textContent = start.toLocaleString('pl-PL', {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'long',
+            hour: '2-digit',
+            minute: '2-digit',
+            timeZone: 'Europe/Warsaw',
+          });
+          el.classList.remove('hidden');
+        }
+      })();
+    </script>
+  </body>
+</html>

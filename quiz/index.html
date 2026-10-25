@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Plan odblokowania mówienia po angielsku | Cambridge School of English</title>
-<meta name="description" content="Odpowiedz na 8 pytań i pobierz darmowy plan nauki mówienia po angielsku na 90 dni, dopasowany do Twojej blokady.">
+<meta name="description" content="Odpowiedz na 10 pytań i pobierz darmowy plan nauki mówienia po angielsku na 90 dni, dopasowany do Twojej blokady.">
 <link rel="icon" type="image/png" href="../assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -190,91 +190,154 @@ main{flex:1}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
 
-/* ===== Strony planu (A4 794x1123 px, stałe kolory, niezależne od motywu) ===== */
-#render{position:absolute;left:-12000px;top:0;width:794px}
-.pg{width:794px;height:1123px;position:relative;overflow:hidden;background:#fff;color:#1d2538;padding:60px 64px 76px;font:13px/1.55 Inter,sans-serif;text-align:left}
-.pg h1,.pg h2{font-family:"Playfair Display",Georgia,serif;color:#1a2744;letter-spacing:-.01em}
-.pg h2{font-size:30px;line-height:1.15;margin:0 0 12px}
-.pg h3{font:700 14.5px/1.35 Inter,sans-serif;color:#1a2744;margin:18px 0 6px}
-.pg p{margin:0 0 8px}
-.pg ul{margin:0;padding:0;list-style:none}
-.pg li{position:relative;padding-left:18px;margin:5px 0}
-.pg li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:2px;background:#c9a84c}
-.pg .rule{width:44px;height:3px;border-radius:2px;background:#c9a84c;margin-bottom:18px}
-.pg .lead2{font-size:14.5px;color:#3b4560;margin-bottom:14px}
-.pg .muted{color:#6b7488}
-.pg .small{font-size:11.5px}
-.pg .foot{position:absolute;left:64px;right:64px;bottom:34px;display:flex;justify-content:space-between;font-size:10.5px;color:#8a92a6;border-top:1px solid #e6e9f0;padding-top:10px}
-.pg .card{background:#f6f7fa;border:1px solid #e6e9f0;border-radius:12px;padding:14px 16px}
 
-.pg.cover{background:#1a2744;color:#fff;padding:76px 64px;display:flex;flex-direction:column}
+/* ===== Strony planu (A4 794x1123 px, stałe kolory, niezależne od motywu) =====
+   Rozmiary w em względem .pg (13px). Gdy treść się nie mieści, fitPages() zmniejsza czcionkę strony (min. 10px). */
+#render{position:absolute;left:-12000px;top:0;width:794px}
+.pg{width:794px;height:1123px;position:relative;overflow:hidden;background:#fff;color:#1d2538;padding:54px 60px 72px;font:13px/1.5 Inter,sans-serif;text-align:left}
+.pg h1,.pg h2{font-family:"Playfair Display",Georgia,serif;color:#1a2744;letter-spacing:-.01em;margin:0}
+.pg h2{font-size:2.1em;line-height:1.15;margin:0 0 .45em}
+.pg h3{font:700 1.08em/1.35 Inter,sans-serif;color:#1a2744;margin:1.15em 0 .45em}
+.pg p{margin:0 0 .6em}
+.pg ul{margin:0;padding:0;list-style:none}
+.pg li{position:relative;padding-left:1.4em;margin:.35em 0}
+.pg li::before{content:"";position:absolute;left:0;top:.6em;width:.55em;height:.55em;border-radius:2px;background:#c9a84c}
+.pg .kick2{display:flex;align-items:center;gap:12px;font-size:.82em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#a8862f;margin-bottom:1em}
+.pg .kick2::before{content:"";width:34px;height:3px;border-radius:2px;background:#c9a84c}
+.pg .lead2{font-size:1.1em;color:#3b4560;margin-bottom:.9em}
+.pg .muted{color:#6b7488}
+.pg .small{font-size:.88em}
+.pg .foot{position:absolute;left:60px;right:60px;bottom:30px;display:flex;justify-content:space-between;font-size:10.5px;color:#8a92a6;border-top:1px solid #e6e9f0;padding-top:10px}
+.pg .card{background:#f6f7fa;border:1px solid #e6e9f0;border-radius:12px;padding:.9em 1.15em}
+.pg .warm{background:#faf6ea;border:1px solid #ecdfb8;border-radius:12px;padding:.75em 1.1em;margin:.8em 0}
+.pg .dark{background:#1a2744;color:#fff;border-radius:12px;padding:.95em 1.2em;margin:.9em 0;font-size:1.04em}
+.pg .dark strong{color:#c9a84c}
+.pg .cb{display:inline-block;width:1.1em;height:1.1em;border:1.5px solid #a9b3cc;border-radius:4px;vertical-align:-.2em;margin-right:.6em}
+.pg .checks li{padding-left:0}
+.pg .checks li::before{display:none}
+
+.pg.cover{background:#1a2744;color:#fff;padding:72px 64px 56px;display:flex;flex-direction:column}
 .pg.cover .kick{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#c9a84c}
-.pg.cover h1{color:#fff;font-size:66px;line-height:1.04;margin:22px 0 30px;max-width:9ch}
+.pg.cover h1{color:#fff;font-size:66px;line-height:1.04;margin:22px 0 28px;max-width:9ch}
 .pg.cover .pill{align-self:flex-start;border:1.5px solid #c9a84c;color:#fff;border-radius:999px;padding:9px 18px;font-size:15px;font-weight:600}
-.pg.cover .for{margin-top:22px;font-size:16px;line-height:1.7;color:#c8cfe0}
+.pg.cover .for{margin-top:20px;font-size:16px;line-height:1.7;color:#c8cfe0}
 .pg.cover .for b{color:#fff}
+.pg.cover .tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:34px}
+.pg.cover .tiles div{border-top:2px solid #c9a84c;padding-top:10px}
+.pg.cover .tiles b{display:block;font:700 26px/1.1 "Playfair Display",serif;color:#c9a84c}
+.pg.cover .tiles span{display:block;font-size:12px;line-height:1.35;color:#c8cfe0;margin-top:5px}
 .pg.cover .cw{margin-top:auto}
-.pg.cover .brandline{display:flex;justify-content:space-between;margin-top:26px;padding-top:16px;border-top:1px solid #34426b;font-size:12.5px;color:#c8cfe0}
+.pg.cover .brandline{display:flex;justify-content:space-between;margin-top:24px;padding-top:16px;border-top:1px solid #34426b;font-size:12.5px;color:#c8cfe0}
 .pg.cover .brandline b{color:#fff}
 
-.pg .map{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px 0 6px}
+.pg .today{border:1.5px solid #c9a84c;border-radius:14px;padding:1em 1.2em;margin:.4em 0 .6em}
+.pg .today .lbl{font-size:.8em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#a8862f}
+.pg .today h3{margin:.2em 0 .4em;font-size:1.25em}
+.pg .rules{counter-reset:r}
+.pg .rules li{padding-left:2em}
+.pg .rules li::before{counter-increment:r;content:counter(r);background:#1a2744;color:#c9a84c;width:1.45em;height:1.45em;border-radius:50%;top:.02em;font:700 .8em/1.45em Inter,sans-serif;text-align:center}
+.pg .toc{display:grid;grid-template-columns:1fr 1fr;gap:.15em 2em;margin-top:.4em}
+.pg .toc div{display:grid;grid-template-columns:2.2em 1fr;padding:.3em 0;border-bottom:1px dotted #d3d8e3}
+.pg .toc b{color:#a8862f}
+
+.pg .map{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:.8em 0 .4em}
 .pg .map .mk{height:24px}
-.pg .map .mk span{display:inline-block;font-size:10.5px;font-weight:700;border-radius:999px;padding:3px 9px;background:#c9a84c;color:#1a2744}
+.pg .map .mk span{display:inline-block;font-size:10.5px;font-weight:700;border-radius:999px;padding:3px 9px;background:#c9a84c;color:#1a2744;white-space:nowrap}
 .pg .map .mk.t span{background:#1a2744;color:#fff}
-.pg .map .bars{display:flex;align-items:flex-end;gap:3px;height:84px;padding:0 2px}
+.pg .map .bars{display:flex;align-items:flex-end;gap:3px;height:70px;padding:0 2px}
 .pg .map .bars i{flex:1;border-radius:3px;background:#e1e5ee}
-.pg .map .done .bars i{background:#a9b3cc}
-.pg .map .cur .bars i{background:#c9a84c}
-.pg .map .tgt .bars i{background:#1a2744}
+.pg .map .past .bars i{background:#a9b3cc}
+.pg .map .here .bars i{background:#c9a84c}
+.pg .map .goal .bars i{background:#1a2744}
 .pg .map .lb{font-size:11px;line-height:1.35;color:#566079;margin-top:8px;border-top:2px solid #e1e5ee;padding-top:7px}
-.pg .map .cur .lb{border-color:#c9a84c}
-.pg .map .tgt .lb{border-color:#1a2744}
+.pg .map .here .lb{border-color:#c9a84c}
+.pg .map .goal .lb{border-color:#1a2744}
 .pg .map .lb b{display:block;color:#1a2744;font-size:12px}
-.pg .next{margin-top:18px;background:#f3f5f9;border-left:3px solid #1a2744;padding:12px 18px;border-radius:0 10px 10px 0}
-.pg .next h3{margin-top:0}
-.pg .next p{margin:0}
 
-.pg .tech{display:grid;grid-template-columns:32px 1fr;gap:14px;margin-bottom:10px}
-.pg .tech .n{width:32px;height:32px;border-radius:50%;background:#1a2744;color:#c9a84c;font:700 14px/32px Inter,sans-serif;text-align:center}
-.pg .tech h3{margin:4px 0 4px}
+.pg .st{width:100%;border-collapse:collapse;margin:.5em 0 1em}
+.pg .st th{text-align:left;background:#1a2744;color:#fff;padding:.55em .8em;font-weight:600}
+.pg .st td{border-bottom:1px solid #e0e4ec;padding:.7em .8em;vertical-align:top}
+.pg .st td:first-child{font-weight:700;color:#1a2744;width:25%}
+.pg .st td:last-child{background:#fbf8ef}
+.pg .analogy{font-style:italic;color:#566079;border-left:3px solid #c9a84c;padding:.2em 0 .2em 1em;margin-top:1em}
+
+.pg .tech{display:grid;grid-template-columns:2.4em 1fr;gap:1em;margin-bottom:.7em}
+.pg .tech .n{width:2.4em;height:2.4em;border-radius:50%;background:#1a2744;color:#c9a84c;font:700 1.05em/2.3em Inter,sans-serif;text-align:center}
+.pg .tech h3{margin:.2em 0 .3em}
 .pg .tech p{margin:0}
-.pg .avoid{background:#faf6ea;border:1px solid #ecdfb8;border-radius:12px;padding:12px 16px;margin:16px 0}
 
-.pg .mrow{display:grid;grid-template-columns:150px 1fr;gap:22px;padding:16px 0;border-top:1px solid #e6e9f0}
-.pg .mrow .when{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#a8862f}
-.pg .mrow .t{font:700 18px/1.25 "Playfair Display",serif;color:#1a2744;margin-top:4px}
-.pg .mrow li{margin:3px 0 6px}
-.pg .goal{background:#1a2744;color:#fff;border-radius:12px;padding:16px 18px;margin:16px 0 14px;font-size:14px}
-.pg .goal strong{color:#c9a84c}
-.pg .rhythm p{margin:0 0 6px}
+.pg .mrow{display:grid;grid-template-columns:140px 1fr;gap:20px;padding:.9em 0;border-top:1px solid #e6e9f0}
+.pg .mrow .when{font-size:.82em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#a8862f}
+.pg .mrow .t{font:700 1.35em/1.25 "Playfair Display",serif;color:#1a2744;margin-top:.25em}
+.pg .mrow li{margin:.2em 0 .45em}
+.pg .rhythm p{margin:0 0 .5em}
 
-.pg .day{display:grid;grid-template-columns:42px 1fr 18px;gap:12px;align-items:start;padding:8px 0;border-top:1px solid #edf0f5;font-size:12.5px;line-height:1.5}
-.pg .day .d{font:700 14px/1.4 Inter,sans-serif;color:#1a2744}
-.pg .day .box{width:16px;height:16px;border:1.5px solid #a9b3cc;border-radius:4px;margin-top:2px}
+.pg .day{display:grid;grid-template-columns:4.4em 1fr 1.2em;gap:.9em;align-items:start;padding:.6em 0;border-top:1px solid #edf0f5;font-size:.97em}
+.pg .day .d{font-weight:700;color:#a8862f;font-size:.86em;letter-spacing:.04em;text-transform:uppercase;padding-top:.15em}
+.pg .day .tt{font-weight:700;color:#1a2744;margin-bottom:.15em}
+.pg .day p{margin:0 0 .2em}
+.pg .day .x{font-size:.92em;color:#4b5570}
+.pg .day .x b{color:#1a2744}
+.pg .day .cb{margin:.2em 0 0}
 
-.pg .phr{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
-.pg .phrase{border:1px solid #e6e9f0;border-radius:10px;padding:11px 14px}
-.pg .phrase b{display:block;color:#1a2744;font-size:13.5px;margin-bottom:2px}
-.pg .phrase span{color:#6b7488;font-size:12px}
+.pg .phr{display:grid;grid-template-columns:1fr 1fr;gap:.7em;margin-top:.8em}
+.pg .phrase{border:1px solid #e6e9f0;border-radius:10px;padding:.75em 1em;display:grid;grid-template-columns:1.8em 1fr;gap:.2em}
+.pg .phrase.pri{border-color:#e3cf95;background:#fdfaf1}
+.pg .phrase i{font-style:normal;font-weight:700;color:#a8862f}
+.pg .phrase b{display:block;color:#1a2744;font-size:1.04em}
+.pg .phrase span{color:#6b7488;font-size:.92em}
 
-.pg .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-.pg .grid2 h3{margin:0 0 6px}
+.pg .dl{display:grid;grid-template-columns:5.6em 1fr;gap:.1em .8em;padding:.45em .7em;border-radius:8px;border-left:3px solid transparent}
+.pg .dl.you{background:#fbf6e7;border-left:3px solid #c9a84c}
+.pg .dl .who{font-size:.82em;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#8a92a6;padding-top:.15em}
+.pg .dl.you .who{color:#a8862f}
+.pg .dl b{color:#1a2744}
+.pg .dl span{display:block;color:#6b7488;font-size:.9em}
+.pg .rounds{display:grid;grid-template-columns:repeat(3,1fr);gap:.7em;margin:.5em 0}
+.pg .rounds div{border:1px solid #e6e9f0;border-radius:10px;padding:.6em .9em}
+.pg .rounds b{display:block;color:#1a2744}
+.pg .qs{display:grid;grid-template-columns:1fr 1fr;gap:.35em 1.4em}
+.pg .qs div{display:grid;grid-template-columns:1.1em 1fr;padding:.25em 0;border-bottom:1px solid #f0f2f6}
+.pg .qs i{font-style:normal;color:#c9a84c}
+.pg .qs b{color:#1a2744;font-weight:600}
+.pg .qs span{display:block;color:#6b7488;font-size:.88em}
+
+.pg .grid2{display:grid;grid-template-columns:1fr 1fr;gap:.9em;margin-top:.8em}
+.pg .grid2 h3{margin:0 0 .45em}
 .pg .grid2 p{margin:0}
 
-.pg .wk{display:grid;grid-template-columns:86px auto 1fr;align-items:center;gap:16px;padding:5px 0}
+.pg .wk{display:grid;grid-template-columns:6.6em auto 1fr;align-items:center;gap:1.2em;padding:.3em 0}
 .pg .wk .n{font-weight:600;color:#1a2744}
 .pg .wk .bx{display:flex;gap:6px}
-.pg .wk .bx i{width:20px;height:20px;border:1.5px solid #c3cada;border-radius:5px}
-.pg .wk .tag{justify-self:start;font-size:10.5px;font-weight:600;color:#8a6d1f;background:#faf6ea;border-radius:999px;padding:2px 10px}
-.pg .rt{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:8px}
-.pg .rt th{text-align:left;background:#1a2744;color:#fff;padding:7px 10px;font-weight:600}
-.pg .rt td{border:1px solid #e0e4ec;height:40px;padding:4px 10px;vertical-align:top}
-.pg .rt td:first-child{width:64px;font-weight:600;color:#1a2744}
+.pg .wk .bx i{width:1.55em;height:1.55em;border:1.5px solid #c3cada;border-radius:5px}
+.pg .wk .tag{justify-self:start;font-size:.82em;font-weight:600;color:#8a6d1f;background:#faf6ea;border-radius:999px;padding:2px 10px}
+.pg .rt{width:100%;border-collapse:collapse;font-size:.9em;margin-top:.5em}
+.pg .rt th{text-align:left;background:#1a2744;color:#fff;padding:.5em .8em;font-weight:600}
+.pg .rt td{border:1px solid #e0e4ec;height:2.9em;padding:.3em .8em;vertical-align:top}
+.pg .rt td:first-child{width:5em;font-weight:600;color:#1a2744}
 
-.pg .cta{background:#1a2744;color:#c8cfe0;border-radius:14px;padding:24px 26px;margin:22px 0 18px}
-.pg .cta h3{font:700 21px/1.25 "Playfair Display",serif;color:#fff;margin:0 0 8px}
-.pg .cta .b{display:inline-block;background:#c9a84c;color:#1a2744;font-weight:700;font-size:14px;padding:11px 20px;border-radius:10px;margin:10px 14px 0 0}
-.pg .cta .mail{color:#fff}
+.pg .day .why{font-size:.88em;font-style:italic;color:#7a6a3a;margin-bottom:.25em}
+.pg .ex{display:grid;grid-template-columns:1fr 1fr;gap:.7em}
+.pg .ex div{border-radius:10px;padding:.7em 1em;border:1px solid #e6e9f0}
+.pg .ex .now{background:#fbf6e7;border-color:#ecdfb8}
+.pg .ex .goal{background:#eef1f7;border-color:#d5dbe8}
+.pg .ex b{display:block;color:#1a2744;font-size:1.05em;margin:.15em 0 .2em}
+.pg .lbl{display:block;font-size:.8em;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a8862f}
+.pg .rh{display:grid;grid-template-columns:1fr 1fr;gap:.55em 1.4em}
+.pg .rh div{display:grid;grid-template-columns:1.6em 1fr;padding:.45em 0;border-top:1px solid #edf0f5}
+.pg .rh .cb{margin:.2em 0 0}
+.pg .rh b{color:#1a2744}
+.pg .rh p{grid-column:2;margin:.1em 0 0;font-size:.95em}
+.pg .rounds .lbl{margin-bottom:.15em}
+
+.pg .cta{border-radius:14px;padding:1.6em 1.8em;margin:1.4em 0 1.2em}
+.pg .cta.primary{background:#1a2744;color:#c8cfe0}
+.pg .cta.secondary{background:#f6f7fa;border:1.5px solid #e0e4ec;color:#3b4560}
+.pg .cta h3{font:700 1.6em/1.25 "Playfair Display",serif;margin:0 0 .4em;color:#1a2744}
+.pg .cta.primary h3{color:#fff}
+.pg .cta .b{display:inline-block;background:#c9a84c;color:#1a2744;font-weight:700;font-size:1.08em;padding:.8em 1.5em;border-radius:10px;margin-top:.7em}
+.pg .cta.secondary .b{background:#1a2744;color:#fff}
+.pg .booklink{color:#1a2744;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 
 @media print{
   @page{size:A4;margin:0}
@@ -305,21 +368,22 @@ main{flex:1}
     <div class="hero">
       <div class="enter">
         <h1>Rozumiesz angielski, ale <em>milkniesz</em>, gdy trzeba mówić?</h1>
-        <p class="sub">Odpowiedz na 8 pytań i odbierz darmowy plan na 90 dni, dopasowany do Twojej blokady.</p>
-        <button class="btn primary" id="startBtn" type="button">Zacznij quiz <i class="ph ph-arrow-right"></i></button>
+        <p class="sub" id="introLead">Odpowiedz na 10 krótkich pytań (około 2 minuty). Dostaniesz spersonalizowaną mapę mówienia i plan na 90 dni w PDF.</p>
+        <button class="btn primary" id="startBtn" type="button" disabled>Zacznij quiz <i class="ph ph-arrow-right"></i></button>
+        <div class="alert" id="introMsg" role="status" hidden></div>
       </div>
       <div class="fan" id="fan" aria-hidden="true"></div>
     </div>
     <div class="inside">
       <div>
         <h2>Co znajdziesz w planie</h2>
-        <p class="note">9 stron PDF do pobrania. Link do planu dostaniesz na e-mail.</p>
+        <p class="note">14 stron PDF do pobrania. Link do planu dostaniesz na e-mail.</p>
       </div>
       <div class="feats">
         <div class="feat"><i class="ph ph-map-trifold"></i><b>Mapa Twojego etapu</b><p>Gdzie jesteś dziś i dokąd dojdziesz w 90 dni.</p></div>
         <div class="feat"><i class="ph ph-calendar-check"></i><b>Plan pierwszych 14 dni</b><p>Konkretne ćwiczenie na każdy dzień, od 5 minut.</p></div>
         <div class="feat"><i class="ph ph-lifebuoy"></i><b>Karta ratunkowa</b><p>Co powiedzieć, gdy zatniesz się w połowie zdania.</p></div>
-        <div class="feat"><i class="ph ph-chat-circle-text"></i><b>Zdania na Twoją sytuację</b><p>12 gotowych zdań na spotkania, telefon albo podróż.</p></div>
+        <div class="feat"><i class="ph ph-chat-circle-text"></i><b>Zdania i rozmowa na Twoją sytuację</b><p>12 gotowych zdań i rozmowa do przećwiczenia w 3 rundach.</p></div>
       </div>
     </div>
   </section>
@@ -331,11 +395,13 @@ main{flex:1}
       <div id="qbox">
         <div class="qcount" id="qcount" aria-live="polite"></div>
         <h2 class="qtext" id="qtext"></h2>
+        <p class="hint" id="qhelper" style="display:block;margin:-14px 0 20px;font-size:15px" hidden></p>
         <div class="opts" id="opts" role="group" aria-labelledby="qtext"></div>
       </div>
       <div class="qnav">
-        <button class="link" id="backBtn" type="button"><i class="ph ph-arrow-left"></i>Poprzednie pytanie</button>
-        <span class="hint">Możesz też wybierać klawiszami 1-5</span>
+        <button class="link" id="backBtn" type="button"><i class="ph ph-arrow-left"></i><span id="backLbl">Poprzednie pytanie</span></button>
+        <button class="link" id="skipBtn" type="button" hidden></button>
+        <span class="hint" id="keyHint">Możesz też wybierać klawiszami 1-5</span>
       </div>
     </div>
   </section>
@@ -349,7 +415,7 @@ main{flex:1}
       <form class="mail" id="mailForm" novalidate>
         <div class="fld">
           <label for="nameInput">Imię</label>
-          <input id="nameInput" name="name" type="text" autocomplete="given-name" maxlength="60" required>
+          <input id="nameInput" name="name" type="text" autocomplete="given-name" maxlength="40" required>
         </div>
         <div class="fld">
           <label for="mailInput">E-mail</label>
@@ -399,7 +465,7 @@ main{flex:1}
     <div class="res">
       <aside class="side">
         <h2>Twój plan jest gotowy</h2>
-        <p class="sub">9 stron PDF ułożonych pod Twoje odpowiedzi. Pobierz go i zacznij od dnia 1.</p>
+        <p class="sub">14 stron PDF ułożonych pod Twoje odpowiedzi. Pobierz go i zacznij od dnia 1.</p>
         <div class="sum" id="sum"></div>
         <div class="acts">
           <a class="btn primary wide" id="pdfBtn" download="Plan-mowienia-po-angielsku.pdf"><i class="ph ph-download-simple"></i>Pobierz PDF</a>
@@ -420,165 +486,49 @@ main{flex:1}
 <!-- Strony planu renderowane poza ekranem (źródło dla PDF i druku) -->
 <div id="render" aria-hidden="true"></div>
 
+<script src="quiz-logic.js"></script>
+<script src="quiz-content.js"></script>
 <script>
 /* ===== Konfiguracja (do podmiany przed wdrożeniem) ===== */
 const CONFIG = {
   school: "Cambridge School of English",
   mentor: "Marek",
-  bookingUrl: "../#kontakt",           // link do kalendarza (Cal.com / Calendly)
+  bookingUrl: "https://cambridgeschool.pl/#kontakt",  // DO POTWIERDZENIA: prawdziwy link rezerwacji (musi być https)
   contactEmail: "marek@cambridgeschool.pl",
   quizUrl: "http://192.168.0.214:8080/quiz/",   // TYMCZASOWO do testu w Wi-Fi; przywrócić "https://cambridgeschool.pl/quiz/"
-  privacyUrl: "",                                // link do polityki prywatności (pokazywany przy zgodzie)
+  privacyUrl: "../polityka-prywatnosci.html",    // link do polityki prywatności (pokazywany przy zgodzie)
   // MailerLite: ID z adresu formularza (action="https://assets.mailerlite.com/jsonp/<accountId>/forms/<formId>/subscribe").
   // Puste = formularz e-mail jest ukryty.
   mailerlite: { accountId: "2400422", formId: "200780982542927303" },
-  doubleOptIn: false                             // true, jeśli formularz w MailerLite ma włączone podwójne potwierdzenie
+  doubleOptIn: false,                            // true, jeśli formularz w MailerLite ma włączone podwójne potwierdzenie
+  previewNoForm: true                            // TYMCZASOWO (podgląd): pomija formularz e-mail i od razu składa plan. Przed wdrożeniem: false
 };
 const LIBS = [
   "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js",
   "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
 ];
+const SAMPLE = {situation:"meetings",goal:"work",react:"2",length:"3",mind:"translator",mind2:"perfectionist",level:"b1",partner:"yes",time:"12",interest:"soon"};
 
-/* ===== Pytania ===== */
-const QUESTIONS = [
-  { id:"situation", q:"W jakiej sytuacji blokujesz się najczęściej?",
-    opts:[["meetings","Na spotkaniach w pracy"],["foreigners","W rozmowie z obcokrajowcem"],["calls","W rozmowach telefonicznych i na callach"],["travel","Za granicą: hotel, restauracja, lotnisko"],["smalltalk","W luźnej rozmowie, small talk"]]},
-  { id:"mind", q:"Co dzieje się w Twojej głowie, gdy masz coś powiedzieć?",
-    opts:[["translator","Układam zdanie po polsku i tłumaczę, a rozmowa idzie dalej"],["perfectionist","Boję się błędu, więc wolę nic nie mówić"],["searcher","Szukam idealnego słowa i przez to przerywam wypowiedź"],["freeze","Czuję stres i robi mi się pustka w głowie"],["practice","Nie czuję blokady, po prostu rzadko mówię po angielsku"]]},
-  { id:"level", q:"Jak oceniasz swój angielski ogólnie?",
-    opts:[["a2","Dopiero zaczynam, znam podstawy"],["b1","Rozumiem dużo, mówię prostymi zdaniami"],["b2","Rozumiem prawie wszystko, mówię znacznie mniej"],["unknown","Trudno mi to ocenić"]]},
-  { id:"react", q:"Co najczęściej robisz, gdy ktoś zagaduje Cię po angielsku?",
-    opts:[["1","Rozumiem, ale odpowiadam jednym słowem albo milczę"],["2","Odpowiadam z opóźnieniem, bo najpierw układam zdanie w głowie"],["3","Odpowiadam krótko i prosto, ale brakuje mi słów na więcej"],["4","Odpowiadam sprawnie, o ile nie ma stresu ani presji"]]},
-  { id:"length", q:"Ile potrafisz powiedzieć bez zatrzymywania się, na znany Ci temat (np. Twoja praca)?",
-    opts:[["1","Pojedyncze słowa lub gotowe frazy"],["2","Jedno zdanie, po chwili namysłu"],["3","Kilka prostych zdań"],["4","Minutę lub dłużej, jeśli nikt mi nie przeszkadza"]]},
-  { id:"goal", q:"Po co potrzebujesz mówić swobodniej?",
-    opts:[["work","Do pracy: spotkania, awans, projekty"],["travel","Do podróży i radzenia sobie za granicą"],["people","Do rozmów z ludźmi, z którymi dziś unikam angielskiego"],["confidence","Dla pewności siebie, żeby przestać się wstydzić"]]},
-  { id:"time", q:"Ile czasu dziennie możesz realnie poświęcić na ćwiczenia?",
-    opts:[["5","Około 5 minut"],["12","10-15 minut"],["20","20 minut lub więcej"]]},
-  { id:"interest", q:"Czy myślałeś o zajęciach z lektorem?",
-    opts:[["soon","Tak, chcę zacząć w najbliższym czasie"],["later","Może później, najpierw spróbuję sam"],["alone","Nie, chcę uczyć się samodzielnie"]]}
-];
-
-/* ===== Treść planu (teksty robocze do akceptacji przez lektora) ===== */
-const STAGES = [
-  {n:1,name:"Rozumiem, milczę",desc:"Rozumiesz więcej, niż potrafisz powiedzieć. Odpowiadasz pojedynczymi słowami albo wolisz nie włączać się do rozmowy.",
-   exit:["Odpowiadasz pełnym zdaniem, a nie jednym słowem","Mówisz 5 gotowych zdań z Twojej sytuacji bez zaglądania","Rozmawiasz po angielsku z żywym człowiekiem przynajmniej raz w tygodniu"]},
-  {n:2,name:"Tłumaczę w głowie",desc:"Znasz słowa, ale najpierw układasz zdanie po polsku i tłumaczysz je. Zanim skończysz, rozmowa jest już dalej.",
-   exit:["Pierwsze zdanie odpowiedzi mówisz bez tłumaczenia w głowie","Na proste pytania odpowiadasz w kilka sekund","Kończysz zdanie mimo błędu"]},
-  {n:3,name:"Mówię krótko",desc:"Radzisz sobie w prostych rozmowach, ale wypowiedzi są krótkie i urywają się, gdy temat robi się trudniejszy.",
-   exit:["Mówisz minutę o znanym temacie bez zatrzymania","Odpowiadasz trzema zdaniami: odpowiedź, powód, przykład","Podtrzymujesz rozmowę własnym pytaniem"]},
-  {n:4,name:"Mówię pod presją",desc:"W spokojnej rozmowie jest dobrze, ale stres, nowi ludzie albo wysoka stawka sprawiają, że się zacinasz.",
-   exit:["Zachowujesz płynność w rozmowie z nieznajomym","Po zacięciu wracasz do wypowiedzi, zamiast się poddać","Zabierasz głos jako pierwszy tam, gdzie wcześniej się bałeś"]},
-  {n:5,name:"Mówię swobodnie",desc:"Rozmawiasz bez tłumaczenia i bez napięcia. Szlifujesz niuanse: styl, tempo, słownictwo.",exit:[]}
-];
-
-const MONTHS = {
-  1:[{t:"Pierwsze zdania",b:["Naucz się 12 zdań z Twojej sytuacji (strona 6) i mów je na głos codziennie","Powtarzaj za nagraniem: odsłuchaj zdanie, zatrzymaj, powiedz je","Na pytanie „How are you?” odpowiadaj pełnym zdaniem"]},
-     {t:"Od fraz do zdań",b:["Łącz dwie znane frazy w jedno zdanie","Opowiadaj na głos, co robisz w ciągu dnia, w 3-4 zdaniach","Raz w tygodniu nagraj się i policz, ile zdań powiedziałeś"]},
-     {t:"Pierwsza rozmowa",b:["Przeprowadź krótką rozmowę po angielsku z żywym człowiekiem","Przygotuj 3 pytania, które sam zadasz rozmówcy","Porównaj nagranie z pierwszego i ostatniego tygodnia"]}],
-  2:[{t:"Myślenie po angielsku",b:["Odpowiadaj na pytania w kilka sekund, krótko i niedoskonale","Ćwicz formułki, które dają sekundę: „Well, I think…”, „Let me think…”","Ćwicz tę samą rozmowę trzy razy: ze skryptem, z lukami, z pamięci (jak w dniach 8-10)"]},
-     {t:"Tempo rozmowy",b:["Gdy brakuje słowa, opisz je prościej zamiast go szukać","Odpowiadaj na losowe pytania z limitem 10 sekund","Raz w tygodniu 10 minut rozmowy na żywo, bez przygotowania"]},
-     {t:"Swoboda",b:["Mów minutę o jednym temacie bez zatrzymywania","Opowiadaj historie z życia w czasie przeszłym","Dwa razy w tygodniu rozmowa na żywo"]}],
-  3:[{t:"Dłuższe odpowiedzi",b:["Odpowiadaj trzema zdaniami: odpowiedź, powód, przykład","Ćwicz łączniki: because, so, but, for example, however","Opowiedz ten sam temat trzy razy: w 60, 45 i 30 sekund. Za każdym razem krócej i płynniej"]},
-     {t:"Dłuższa wypowiedź",b:["Opowiedz historię w 2 minuty: początek, środek, koniec","Naucz się pytań podtrzymujących rozmowę: „What do you mean?”, „How did that go?”","Raz w tygodniu rozmowa na żywo, minimum 15 minut"]},
-     {t:"Naturalność",b:["Odpowiadaj na pytania, których się nie spodziewasz","Proś o wyjaśnienie, gdy czegoś nie rozumiesz: „Could you say that again?”","Przygotuj i powiedz 3-minutową prezentację na temat z Twojej pracy lub pasji"]}],
-  4:[{t:"Oswajanie napięcia",b:["Mów na głos w warunkach lekkiej presji: nagranie, timer, ktoś słucha","Naucz się pierwszego zdania, które uruchamia resztę: „Thanks for having me…”","Mów wolniej, z pauzami, zamiast przyspieszać"]},
-     {t:"Rosnąca stawka",b:["Symuluj trudne sytuacje: call, spotkanie, rozmowa o podwyżkę (poproś kogoś o niespodziewane pytania)","Powtarzaj trudne momenty, aż staną się znajome","Rozmawiaj z osobami, których nie znasz (wymiana językowa)"]},
-     {t:"Odporność",b:["Zgłoś się do prawdziwej sytuacji: pytanie na spotkaniu, krótka prezentacja","Po każdej rozmowie zapisz, co poszło dobrze, a nie same błędy","Zacznij rozmowę jako pierwszy"]}]
-};
-
-const BLOCK = {
-  translator:{title:"Tłumacz w głowie",
-    desc:"Układasz zdanie po polsku, tłumaczysz je i dopiero mówisz. Zanim skończysz, rozmowa jest już dalej. Słowa masz, brakuje Ci odruchu, żeby sięgać po nie od razu po angielsku.",
-    tech:[["Krótkie odpowiedzi w 5 sekund","Na każde pytanie odpowiadaj od razu jednym prostym zdaniem, nawet niedoskonałym. Szybkość jest ważniejsza niż poprawność."],
-          ["Opisuj na głos","Przez 2 minuty dziennie komentuj po angielsku to, co robisz i widzisz („I’m making coffee. It’s hot.”). Uczysz mózg myślenia bez pośrednika."],
-          ["Gotowe bloczki","Naucz się 10 fraz z Twojej sytuacji tak, żeby wychodziły bez namysłu. Z bloczków łatwiej zbudować zdanie niż z pojedynczych słów."]],
-    avoid:"Pisanie zdania na kartce przed powiedzeniem go. To wzmacnia tłumaczenie w głowie."},
-  perfectionist:{title:"Perfekcjonista",
-    desc:"Wolisz milczeć niż powiedzieć coś niepoprawnie. Wiesz więcej, niż pokazujesz, a strach przed błędem blokuje Cię bardziej niż brak słów.",
-    tech:[["Najpierw komunikat","Celem jest być zrozumianym, nie bezbłędnym. Przed wypowiedzią powiedz sobie: najpierw komunikat, potem poprawność."],
-          ["Celowe błędy","Raz w tygodniu nagraj 60 sekund, w których wolno Ci robić błędy i nie wolno się poprawiać. Odsłuchaj i sprawdź, czy ktoś by Cię nie zrozumiał."],
-          ["Limit czasu","Ustaw timer na 20 sekund na odpowiedź. Gdy nie ma czasu na kontrolę, zostaje samo mówienie."]],
-    avoid:"Poprawianie się w pół zdania. Dokończ, a poprawkę zrób po wypowiedzi."},
-  searcher:{title:"Szukam idealnego słowa",
-    desc:"Gdy brakuje Ci jednego słowa, cała wypowiedź staje. Szukasz tego najlepszego, zamiast powiedzieć coś prostszego, co też by wystarczyło.",
-    tech:[["Słowo wystarczająco dobre","Zamiast najlepszego słowa weź pierwsze, które przyjdzie Ci do głowy i jest zrozumiałe. Rozmówca potrzebuje sensu, nie ozdobnika."],
-          ["Opisz to, czego brakuje","Gdy słowo ucieka, opisz je: „It’s a thing you use for…”, „It’s like… but bigger”. Ćwicz to codziennie na 5 przedmiotach z otoczenia."],
-          ["Słowo zastępcze","Zostaw lukę i mów dalej: „the thing”, „the place”, „that person”. Słowo często wraca, gdy przestajesz go szukać."]],
-    avoid:"Zatrzymywanie się w pół zdania, żeby sprawdzić słowo w telefonie. Zapisz je i sprawdź po rozmowie."},
-  freeze:{title:"Zamrożenie pod presją",
-    desc:"W spokojnej rozmowie dajesz radę, ale gdy rośnie stawka, w głowie robi się pusto. Wiedza jest, brakuje odporności na stres w momencie mówienia.",
-    tech:[["Pierwsze zdanie na zapas","Naucz się na pamięć 3 zdań otwierających: „Thanks for the question”, „Let me think for a second”, „That’s a good point”. Pierwsze zdanie uruchamia resztę."],
-          ["Oddech i tempo","Przed wypowiedzią weź spokojny wdech i mów wolniej, niż Ci się wydaje, że trzeba. Pauza brzmi pewnie, nie niezręcznie."],
-          ["Stopniowanie stawki","Ćwicz po kolei: sam do siebie, nagranie, znajomy, nieznajomy. Przechodź dalej, gdy poprzedni stopień zaczyna być nudny."]],
-    avoid:"Unikanie sytuacji, w których trzeba mówić. Im dłużej omijasz, tym bardziej rośnie napięcie."},
-  practice:{title:"Brak praktyki mówienia",
-    desc:"Nie masz właściwie blokady, tylko mało okazji do mówienia. Angielski masz w głowie, ale rzadko używasz go na głos, więc przy rozmowie trzeba go najpierw rozruszać.",
-    tech:[["Codzienne minuty na głos","Każdego dnia powiedz kilka zdań po angielsku, nawet do pustego pokoju. Regularność wygrywa z długością."],
-          ["Dodaj angielski do dnia","Zmień język w telefonie, oglądaj filmy z angielskimi napisami, opowiadaj sobie na głos, co zrobiłeś. Okazje do mówienia trzeba stworzyć."],
-          ["Znajdź rozmówcę","Raz w tygodniu porozmawiaj z żywym człowiekiem: wymiana językowa, znajomy, grupa konwersacyjna."]],
-    avoid:"Samo czytanie i słuchanie. Podtrzymują rozumienie, ale nie uczą mówienia."}
-};
-
-const SIT = {
-  meetings:{title:"Spotkania w pracy",short:"na spotkaniach w pracy",items:[
-    ["Could I add something here?","Czy mogę coś dodać?"],["I’d like to raise a point.","Chciałbym poruszyć pewną kwestię."],
-    ["Let me make sure I understand.","Upewnię się, że dobrze rozumiem."],["Could you repeat that, please?","Czy możesz to powtórzyć?"],
-    ["I see it a bit differently.","Ja widzę to trochę inaczej."],["That’s a good point. In my experience…","To dobra uwaga. Z mojego doświadczenia…"],
-    ["Can we come back to that later?","Możemy wrócić do tego później?"],["Just to summarise…","Podsumowując…"],
-    ["I’ll send you the details by email.","Wyślę szczegóły mailem."],["What’s the next step?","Jaki jest następny krok?"],
-    ["Sorry, I didn’t catch that.","Przepraszam, nie dosłyszałem."],["Let me think for a second.","Pozwól mi chwilę się zastanowić."]]},
-  foreigners:{title:"Rozmowa z obcokrajowcem",short:"w rozmowie z obcokrajowcem",items:[
-    ["Nice to meet you. I’m … from Poland.","Miło mi. Jestem … z Polski."],["What do you do?","Czym się zajmujesz?"],
-    ["How long have you been here?","Jak długo tu jesteś?"],["Could you speak a bit slower, please?","Czy możesz mówić trochę wolniej?"],
-    ["Sorry, what does … mean?","Przepraszam, co znaczy …?"],["I’m not sure how to say it, but…","Nie wiem, jak to powiedzieć, ale…"],
-    ["That’s interesting. Tell me more.","To ciekawe. Opowiedz więcej."],["What do you think about…?","Co myślisz o…?"],
-    ["Have you been to Poland before?","Czy byłeś już w Polsce?"],["I’d love to hear your opinion.","Chętnie usłyszę Twoją opinię."],
-    ["It was great talking to you.","Miło się z Tobą rozmawiało."],["Let’s keep in touch.","Zostańmy w kontakcie."]]},
-  calls:{title:"Rozmowy telefoniczne i calle",short:"w rozmowach telefonicznych",items:[
-    ["Hello, this is … speaking.","Dzień dobry, mówi …"],["Can you hear me okay?","Czy mnie słychać?"],
-    ["Sorry, the line is bad. Could you repeat that?","Przepraszam, połączenie jest słabe. Możesz powtórzyć?"],["Could you spell that, please?","Czy możesz to przeliterować?"],
-    ["Let me check and get back to you.","Sprawdzę i wrócę do Ciebie."],["I’m calling about…","Dzwonię w sprawie…"],
-    ["Could I speak to…?","Czy mogę rozmawiać z…?"],["Can you hold on a moment?","Czy możesz chwilę poczekać?"],
-    ["I’ll send a follow-up email.","Wyślę potem maila."],["Thanks for your time.","Dziękuję za poświęcony czas."],
-    ["Sorry, you’re on mute.","Przepraszam, masz wyciszony mikrofon."],["Could you share your screen?","Czy możesz udostępnić ekran?"]]},
-  travel:{title:"Podróże",short:"za granicą",items:[
-    ["Hi, I have a reservation under the name…","Dzień dobry, mam rezerwację na nazwisko…"],["Could we have a table for two?","Czy możemy prosić stolik dla dwóch osób?"],
-    ["What do you recommend?","Co Pan/Pani poleca?"],["Could I have the bill, please?","Czy mogę prosić o rachunek?"],
-    ["How do I get to…?","Jak dojść do…?"],["Is this seat taken?","Czy to miejsce jest wolne?"],
-    ["I’m allergic to…","Mam uczulenie na…"],["How much is it?","Ile to kosztuje?"],
-    ["Could you help me, please? I’m lost.","Czy może mi Pan/Pani pomóc? Zgubiłem się."],["What time does it leave?","O której odjeżdża?"],
-    ["Do you take cards?","Czy przyjmujecie karty?"],["Could you take a photo of us?","Czy może Pan/Pani zrobić nam zdjęcie?"]]},
-  smalltalk:{title:"Luźna rozmowa",short:"w luźnej rozmowie",items:[
-    ["How’s your day going?","Jak Ci mija dzień?"],["Did you have a good weekend?","Jak minął weekend?"],
-    ["What are you up to this weekend?","Co robisz w ten weekend?"],["What do you like to do in your free time?","Co lubisz robić w wolnym czasie?"],
-    ["That sounds great!","Brzmi świetnie!"],["Really? How did that happen?","Naprawdę? Jak do tego doszło?"],
-    ["I’m not sure, but I think…","Nie jestem pewien, ale myślę, że…"],["Same here.","U mnie tak samo."],
-    ["That reminds me of…","To przypomina mi…"],["Sorry, I lost my train of thought.","Przepraszam, zgubiłem wątek."],
-    ["I’ve just started… and I’m enjoying it.","Dopiero zacząłem… i podoba mi się."],["Anyway, it was nice talking to you.","W każdym razie miło się rozmawiało."]]}
-};
-
-const GOAL = {
-  work:"odezwać się jako pierwszy na spotkaniu i poprowadzić krótką prezentację po angielsku",
-  travel:"samodzielnie załatwić hotel, restaurację i nieplanowane sytuacje za granicą",
-  people:"swobodnie porozmawiać z osobami, z którymi dziś unikasz angielskiego",
-  confidence:"mówić bez sprawdzania w głowie, czy zdanie jest poprawne"
-};
-const DAILY = {"5":"5 minut","12":"10-15 minut","20":"20 minut"};
-const WEEKLY = {"5":20,"12":30,"20":45};
-const WARMUP_QS = ["What do you do?","How was your weekend?","What did you have for breakfast?","Where would you like to travel?","Why is this important to you?"];
-const SAMPLE = {situation:"meetings",mind:"translator",level:"b1",react:"2",length:"2",goal:"work",time:"12"};
+/* Wartości wysyłane do MailerLite: takie jak w starej wersji quizu, żeby nie rozbić segmentów i automatyzacji */
+const ML_BLOCK = {translator:"Tłumacz w głowie",perfectionist:"Perfekcjonista",searcher:"Szukam idealnego słowa",freeze:"Zamrożenie pod presją",practice:"Brak praktyki mówienia"};
+const ML_SIT = {meetings:"Spotkania w pracy",foreigners:"Rozmowa z obcokrajowcem",calls:"Rozmowy telefoniczne i calle",travel:"Podróże",smalltalk:"Luźna rozmowa"};
+const ML_TIME = {"5":"5 minut","12":"10-15 minut","20":"20 minut"};
+const ML_PARTNER = {yes:"tak",maybe:"może",no:"nie"};
+const ML_LEVEL = {a2:"A2",b1:"B1",b2:"B2",unknown:"nie wiem"};
 
 /* ===== Stan ===== */
-const state = { i:0, a:{}, res:null, pdfUrl:null, busy:false };
+let CONTENT = null, QUESTIONS = [];
+const state = { i:0, a:{}, plan:null, name:"", pdfUrl:null, busy:false };
 
 const $ = id => document.getElementById(id);
-function esc(s){ return String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+const tpl = (s, ctx) => QuizLogic.fill(s, ctx);
 function show(id){
   document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active", s.id===id));
   window.scrollTo({top:0});
 }
 function replay(el){ el.classList.remove("enter"); void el.offsetWidth; el.classList.add("enter"); }
+const absUrl = u => { try { return new URL(u, location.href).href; } catch(e){ return u; } };
 
 /* ===== Fala (pasek postępu) ===== */
 const N = 44, bars = [];
@@ -592,20 +542,29 @@ function setWave(p){
 /* ===== Quiz ===== */
 function renderQ(){
   const q = QUESTIONS[state.i];
-  $("qcount").textContent = "Pytanie " + (state.i+1) + " z " + QUESTIONS.length;
-  $("qtext").textContent = q.q;
+  $("qcount").textContent = tpl(CONTENT.ui.progress, {i:state.i+1, n:QUESTIONS.length});
+  $("qtext").textContent = q.text;
+  $("qhelper").hidden = !q.helper; $("qhelper").textContent = q.helper || "";
   const box = $("opts"); box.innerHTML = "";
-  q.opts.forEach(([val,label],n)=>{
+  const opts = QuizLogic.questionOptions(CONTENT, q.id, state.a);
+  opts.forEach((o,n)=>{
     const b = document.createElement("button");
-    b.type="button"; b.className="opt"+(state.a[q.id]===val?" sel":"");
-    b.setAttribute("aria-pressed", state.a[q.id]===val);
-    b.innerHTML = `<span class="k">${n+1}</span><span>${esc(label)}</span>`;
-    b.addEventListener("click", ()=>choose(q, val, b));
+    b.type="button"; b.className="opt"+(state.a[q.id]===o.value?" sel":"");
+    b.setAttribute("aria-pressed", state.a[q.id]===o.value);
+    b.innerHTML = `<span class="k">${n+1}</span><span>${esc(o.label)}</span>`;
+    b.addEventListener("click", ()=>choose(q, o.value, b));
     box.appendChild(b);
   });
   $("backBtn").style.visibility = state.i===0 ? "hidden" : "visible";
+  $("skipBtn").hidden = !q.skippable;
+  $("keyHint").textContent = "Możesz też wybierać klawiszami 1-" + opts.length;
   setWave(.08 + .92*(state.i/QUESTIONS.length));
   replay($("qbox"));
+}
+function next(){
+  if (state.i < QUESTIONS.length-1){ state.i++; renderQ(); }
+  else if (CONFIG.previewNoForm) finish();   // podgląd bez formularza (patrz CONFIG)
+  else goMail();
 }
 function choose(q, val, b){
   if (state.busy) return;
@@ -613,34 +572,32 @@ function choose(q, val, b){
   state.a[q.id]=val;
   [...$("opts").children].forEach(c=>{ c.classList.remove("sel"); c.setAttribute("aria-pressed","false"); });
   b.classList.add("sel"); b.setAttribute("aria-pressed","true");
-  setTimeout(()=>{
-    state.busy = false;
-    if (state.i < QUESTIONS.length-1){ state.i++; renderQ(); }
-    else goMail();
-  }, 260);
+  setTimeout(()=>{ state.busy = false; next(); }, 260);
 }
 document.addEventListener("keydown", e=>{
   if (!$("s-q").classList.contains("active") || e.altKey || e.ctrlKey || e.metaKey) return;
   const n = parseInt(e.key,10), opts = $("opts").children;
   if (n>=1 && n<=opts.length) opts[n-1].click();
 });
-
-$("startBtn").addEventListener("click", ()=>{
-  state.i=0; state.a={}; show("s-q"); renderQ();
-});
+function startQuiz(){ state.i=0; state.a={}; state.name=""; show("s-q"); renderQ(); }
+$("startBtn").addEventListener("click", startQuiz);
 $("backBtn").addEventListener("click", ()=>{ if(state.i>0){ state.i--; renderQ(); } });
+$("skipBtn").addEventListener("click", ()=>{ const q=QUESTIONS[state.i]; state.a[q.id] = q.noneOption ? q.noneOption.value : ""; next(); });
 
-function compute(a){
-  const r = +a.react, l = +a.length;
-  let stage = Math.abs(r-l)>=2 ? Math.min(r,l) : Math.floor((r+l)/2);
-  if (a.level==="a2") stage = Math.min(stage,2);
-  stage = Math.max(1, Math.min(4, stage));
-  return { stage, target:Math.min(stage+1,5), blocker:a.mind, beginner:a.level==="a2" };
+/* ===== Plan: logika z quiz-logic.js, treść z quiz-content.json ===== */
+function makePlan(a){
+  const plan = QuizLogic.buildPlan(a, CONTENT, { firstName: state.name, bookingUrl: absUrl(CONFIG.bookingUrl) });
+  if (plan.unresolved.length) throw new Error("Nierozwiązane znaczniki w treści: " + plan.unresolved.join(", "));
+  return plan;
+}
+function logError(e, a){
+  let code = "?"; try { code = QuizLogic.encodeAnswers(a); } catch(_){}
+  console.error("[quiz] błąd planu", { code, contentVersion: CONTENT && CONTENT.meta.contentVersion }, e);
 }
 
-/* ===== Budowa dokumentu (9 stron A4) ===== */
+/* ===== Budowa dokumentu (14 stron A4) ===== */
 function coverWave(){
-  const n=64,w=666,h=170,gap=4,bw=(w-gap*(n-1))/n; let out="";
+  const n=64,w=666,h=150,gap=4,bw=(w-gap*(n-1))/n; let out="";
   for(let k=0;k<n;k++){
     const env=.25+.75*(k/(n-1)), amp=.45+.55*Math.abs(Math.sin(k*.62))*(.6+.4*Math.sin(k*.23+1));
     const hh=Math.max(6,h*env*amp), x=k*(bw+gap), y=h-hh;
@@ -648,167 +605,189 @@ function coverWave(){
   }
   return `<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" aria-hidden="true">${out}</svg>`;
 }
-function mapHtml(st,tg){
-  let h='<div class="map">';
-  for(let s=1;s<=5;s++){
-    const cls = s===st?"cur":(s===tg?"tgt":(s<st?"done":""));
-    const mk = s===st?'<div class="mk"><span>Jesteś tu</span></div>':(s===tg?'<div class="mk t"><span>Cel za 90 dni</span></div>':'<div class="mk"></div>');
+function mapHtml(d){
+  return '<div class="map">' + d.stages.map(s=>{
+    const mk = s.state==="here" ? `<div class="mk"><span>${esc(d.youAreHere)}</span></div>`
+             : s.state==="goal" ? `<div class="mk t"><span>${esc(d.goalMarker)}</span></div>` : '<div class="mk"></div>';
     let b='';
-    for(let k=0;k<9;k++){
-      const p=Math.max(9,(.24+.15*(s-1))*(.6+.4*Math.abs(Math.sin(k*.9+s)))*100);
-      b+=`<i style="height:${p.toFixed(0)}%"></i>`;
-    }
-    h+=`<div class="col ${cls}">${mk}<div class="bars">${b}</div><div class="lb"><b>Etap ${s}</b>${STAGES[s-1].name}</div></div>`;
-  }
-  return h+'</div>';
+    for(let k=0;k<9;k++){ const p=Math.max(9,(.24+.15*(s.id-1))*(.6+.4*Math.abs(Math.sin(k*.9+s.id)))*100); b+=`<i style="height:${p.toFixed(0)}%"></i>`; }
+    return `<div class="${s.state}">${mk}<div class="bars">${b}</div><div class="lb"><b>Etap ${s.id}</b>${esc(s.name)}</div></div>`;
+  }).join("") + '</div>';
 }
-const foot = n=>`<div class="foot"><span>${esc(CONFIG.school)} · Twoja mapa mówienia</span><span>${n} / 9</span></div>`;
+const ul = arr => `<ul>${arr.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`;
+const checks = arr => `<ul class="checks">${arr.map(x=>`<li><span class="cb"></span>${esc(x)}</li>`).join("")}</ul>`;
+/* "Słuchaj: zrozum…" -> pogrubiony początek do dwukropka */
+function boldLead(s){ const i = s.indexOf(": "); return i>0 && i<40 ? `<b>${esc(s.slice(0,i+1))}</b> ${esc(s.slice(i+2))}` : esc(s); }
 const today = ()=>new Date().toLocaleDateString("pl-PL",{day:"numeric",month:"long",year:"numeric"});
 
-function buildDoc(res, a){
-  const st=STAGES[res.stage-1], tg=STAGES[res.target-1];
-  const bl=BLOCK[res.blocker], sit=SIT[a.situation], months=MONTHS[res.stage];
-  const daily=DAILY[a.time], weekly=WEEKLY[a.time];
+function dayHtml(day, L){
+  return `<div class="day"><div class="d">${esc(day.label)}</div><div>
+    <div class="tt">${esc(day.title)}</div>
+    ${day.purpose ? `<p class="why">${esc(day.purpose)}</p>` : ""}
+    <p>${esc(day.core)}</p>
+    ${day.plus ? `<p class="x"><b>${esc(L.plus)}:</b> ${esc(day.plus)}</p>` : ""}
+    ${day.bonus ? `<p class="x"><b>${esc(L.bonus)}:</b> ${esc(day.bonus)}</p>` : ""}
+  </div><span class="cb"></span></div>`;
+}
 
-  const p1=`<section class="pg cover">
-    <div class="kick">Plan samodzielnej nauki mówienia po angielsku</div>
-    <h1>Twoja mapa mówienia</h1>
-    <div class="pill">Etap ${st.n} z 5: ${st.name}</div>
-    <div class="for">Plan na 90 dni<br>Typ blokady: <b>${bl.title}</b><br>Sytuacja: <b>${sit.title}</b></div>
+const PAGE = {
+  cover: (d, plan) => `<div class="kick">${esc(d.line)}</div>
+    <h1>${esc(d.title)}</h1>
+    <div class="pill">${esc(d.subtitle)}</div>
+    ${d.preparedFor ? `<div class="for">${esc(d.preparedFor)}</div>` : ""}
+    <div class="tiles">${d.tiles.map(t=>`<div><b>${esc(t.value)}</b><span>${esc(t.label)}</span></div>`).join("")}</div>
     <div class="cw">${coverWave()}</div>
-    <div class="brandline"><b>${esc(CONFIG.school)}</b><span>${today()}</span></div>
-  </section>`;
+    <div class="brandline"><b>${esc(d.footer)}</b><span>${today()}</span></div>`,
 
-  const beginnerNote = res.beginner ? `<div class="card" style="margin-top:14px"><strong>Twój poziom wygląda na początkujący.</strong> Zacznij od zdań ze strony 6 i od powtarzania za nagraniami. Mówienie z drugą osobą ma największy sens, gdy znasz już podstawy, więc nie spiesz się z rozmowami na żywo.</div>` : "";
-  const p2=`<section class="pg"><div class="rule"></div>
-    <h2>Rozumiesz więcej, niż mówisz. To da się zmienić.</h2>
-    <p class="lead2">Z Twoich odpowiedzi wynika, że jesteś na etapie ${st.n} z 5. Poniżej widzisz, gdzie jesteś i dokąd zmierzasz przez następne 90 dni.</p>
-    <p class="muted small">Pauzy, poprawki i szukanie słów są normalne na tym etapie nauki, nawet u osób, które mówią bardzo dobrze. Pauza nie oznacza porażki.</p>
-    ${mapHtml(res.stage,res.target)}
-    <h3>Co oznacza etap ${st.n}: ${st.name}</h3>
-    <p>${st.desc}</p>
-    <h3>Po czym poznasz, że jesteś gotowy na etap ${tg.n}</h3>
-    <ul>${st.exit.map(x=>`<li>${x}</li>`).join("")}</ul>
-    ${beginnerNote}
-    <div class="next"><h3>Etap ${tg.n}: ${tg.name}</h3><p>${tg.desc}</p></div>
-    ${foot(2)}
-  </section>`;
+  start: d => `<h2>${esc(d.title)}</h2>
+    <p class="lead2">${esc(d.lead)}</p>
+    <div class="today"><div class="lbl">${esc(d.today.label)}</div><h3>${esc(d.today.title)}</h3>
+      <p>${esc(d.today.core)}</p>${d.today.plus ? `<p class="muted">${esc(d.today.plus)}</p>` : ""}</div>
+    <p class="muted">${esc(d.afterToday)}</p>
+    <h3>${esc(d.rulesTitle)}</h3>
+    <ul class="rules">${d.rules.map(r=>`<li>${esc(r)}</li>`).join("")}</ul>
+    <h3>${esc(d.ifThenTitle)}</h3>
+    <div class="card"><p class="muted" style="margin-bottom:.4em">${esc(d.ifThenIntro)}</p><p style="margin:0;line-height:2">${esc(d.ifThenLine)}</p></div>
+    <h3>${esc(d.mapTitle)}</h3>
+    <p class="muted small" style="margin:0">${esc(d.mapIntro)}</p>
+    <div class="toc">${d.mapRows.map(r=>`<div><b>${r.page}</b><span>${esc(r.label)}</span></div>`).join("")}</div>`,
 
-  const p3=`<section class="pg"><div class="rule"></div>
-    <h2>Twoja główna blokada: ${bl.title}</h2>
-    <p class="lead2">${bl.desc} To opis wzorca, a nie diagnoza.</p>
-    <h3 style="margin:22px 0 12px">Trzy techniki, które pomagają</h3>
-    ${bl.tech.map((t,i)=>`<div class="card tech"><div class="n">${i+1}</div><div><h3>${t[0]}</h3><p>${t[1]}</p></div></div>`).join("")}
-    <div class="avoid"><strong>Czego unikać:</strong> ${bl.avoid}</div>
-    <p class="muted small">Jeśli lęk przed mówieniem jest bardzo silny i utrudnia Ci codzienne funkcjonowanie, warto porozmawiać o nim ze specjalistą (psychologiem lub psychoterapeutą). Ten plan nie jest diagnozą ani terapią.</p>
-    ${foot(3)}
-  </section>`;
+  map: d => `<h2>${esc(d.headline)}</h2>
+    ${mapHtml(d)}
+    <h3>${esc(d.whatItMeansTitle)}</h3>
+    <p>${esc(d.summary)}</p>
+    <p class="muted small">${esc(d.normalizeLine)}</p>
+    <h3>${esc(d.exampleTitle)}</h3>
+    <p class="muted small" style="margin-bottom:.5em">${esc(d.exampleIntro)}</p>
+    <div class="ex">${[d.exampleNow, d.exampleGoal].map((x,i)=>`<div class="${i?"goal":"now"}"><span class="lbl">${esc(x.label)}</span><b>${esc(x.en)}</b><span class="muted small">${esc(x.note)}</span></div>`).join("")}</div>
+    <h3>${esc(d.graduateTitle)}</h3>
+    ${ul(d.graduate)}
+    <div class="dark">${esc(d.goalLine)}</div>
+    ${d.notes.map(n=>`<div class="warm">${esc(n)}</div>`).join("")}
+    ${d.tooEasyNote ? `<p class="muted small">${esc(d.tooEasyNote)}</p>` : ""}`,
 
-  const p4=`<section class="pg"><div class="rule"></div>
-    <h2>Twój plan na 90 dni</h2>
-    <p class="lead2">Cel: przejść z etapu ${st.n} na etap ${tg.n}. To ambitny, ale osiągalny cel, a tempo zależy od regularności.</p>
-    ${months.map((m,i)=>`<div class="mrow"><div><div class="when">Miesiąc ${i+1}</div><div class="t">${m.t}</div></div><ul>${m.b.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("")}
-    <div class="goal"><strong>Cel na koniec trzeciego miesiąca:</strong> ${GOAL[a.goal]}.</div>
-    <div class="rhythm">
-      <p><strong>Codziennie:</strong> ${daily} mówienia na głos.</p>
-      <p><strong>Raz w tygodniu:</strong> dłuższa sesja (około ${weekly} minut): nagranie siebie, odsłuch i, jeśli możesz, rozmowa na żywo.</p>
-      <p><strong>Raz w miesiącu:</strong> nagranie kontrolne na ten sam temat i porównanie z poprzednim.</p>
-    </div>
-    ${foot(4)}
-  </section>`;
+  table: d => `<h2>${esc(d.title)}</h2>
+    <p class="lead2">${esc(d.intro)}</p>
+    <table class="st"><tr><th></th><th>${esc(d.colNow)}</th><th>${esc(d.colGraduate)}</th></tr>
+      ${d.rows.map(r=>`<tr><td>${esc(r.dimension)}</td><td>${esc(r.now)}</td><td>${esc(r.toGraduate)}</td></tr>`).join("")}</table>
+    <div class="dark"><strong>${esc(d.bottomLineLabel)}:</strong> ${esc(d.bottomLine)}</div>
+    <p class="analogy">${esc(d.analogy)}</p>`,
 
-  const rec = res.stage===1 ? 30 : 60;
-  const day3 = {
-    translator:`Odpowiedz na głos na 5 pytań, każde w 5 sekund, bez układania zdania w głowie: ${WARMUP_QS.join(" / ")}`,
-    searcher:`Weź 5 przedmiotów z pokoju i opisz każdy w 10 sekund, nie używając jego nazwy („It’s a thing you use for…”). Potem sprawdź nazwę.`,
-    perfectionist:`Nagraj ${rec} sekund, w których celowo nie wolno Ci się poprawiać. Odsłuchaj i sprawdź, czy mimo błędów wszystko było zrozumiałe.`,
-    freeze:`Ustaw timer na 30 sekund. Powiedz na głos zdanie otwierające („Let me think for a second…”) i dokończ wypowiedź, nawet jeśli się zaciniesz.`,
-    practice:`Powiedz na głos 10 zdań o tym, co zrobiłeś dziś, a potem 10 o tym, co zrobisz jutro.`
-  }[res.blocker];
-  const days=[
-    ["1",`Nagraj się telefonem przez ${rec} sekund: opowiedz o swoim dniu. Nie zatrzymuj się przy błędach. To Twoje nagranie wyjściowe, zachowaj je.`],
-    ["2",`Wybierz 5 zdań ze strony 6 („${sit.title}”) i powiedz każde 3 razy na głos. Potem powtórz je, nie zaglądając.`],
-    ["3",day3],
-    ["4",`Powtórz nagranie z dnia 1 na ten sam temat. Porównaj, czy jest dłuższe i płynniejsze. Nie liczysz błędów, tylko zdania.`],
-    ["5",`Powiedz jedno zdanie po angielsku komuś żywemu: znajomemu, współpracownikowi albo w grupie konwersacyjnej.`],
-    ["6-7",`Odpoczynek albo powtórka zdań ze strony 6 i karty ratunkowej ze strony 7.`],
-    ["8",`Runda 1, ze skryptem: przeczytaj na głos 6 zdań ze strony 6 jak rozmowę, w której raz pytasz, raz odpowiadasz.`],
-    ["9",`Runda 2, z lukami: ta sama rozmowa, ale połowę zdań mówisz bez patrzenia.`],
-    ["10",`Runda 3, z pamięci: ta sama rozmowa bez kartki. Nagraj ją.`],
-    ["11",`Ten sam temat trzy razy: w 60, 45 i 30 sekund. Za każdym razem krócej, ale z tym samym sensem.`],
-    ["12",`Przećwicz cztery reakcje ratunkowe ze strony 7. Do każdej ułóż jedno własne zdanie.`],
-    ["13",`Próba generalna: nagraj 5 pytań na telefonie (What do you do? Why is this important to you? …) i odpowiedz na nie po kolei.`],
-    ["14",`10 minut rozmowy po angielsku z żywą osobą, według zasady „słuchaj, odpowiedz, dopytaj”. Bez rozmówcy powtórz dzień 13 z nowymi pytaniami.`]
-  ];
-  const p5=`<section class="pg"><div class="rule"></div>
-    <h2>Twoje pierwsze 14 dni</h2>
-    <p class="lead2">${daily} dziennie. Dzień 14 kończy się 10 minutami rozmowy. Zaznaczaj, co zrobiłeś.</p>
-    ${days.map(d=>`<div class="day"><div class="d">${d[0]}</div><div>${d[1]}</div><div class="box"></div></div>`).join("")}
-    ${foot(5)}
-  </section>`;
+  blockage: d => `<h2>${esc(d.title)}</h2>
+    <p class="lead2">${esc(d.description)} <span class="muted">${esc(d.notDiagnosis)}</span></p>
+    <h3>${esc(d.techniquesTitle)}</h3>
+    ${d.techniques.map((t,i)=>`<div class="card tech"><div class="n">${i+1}</div><div><h3>${esc(t.title)}</h3><p>${esc(t.body)}</p></div></div>`).join("")}
+    ${d.bonus ? `<h3>${esc(d.bonus.title)}</h3><div class="card tech"><div class="n">+</div><div><h3>${esc(d.bonus.technique.title)}</h3><p>${esc(d.bonus.technique.body)}</p></div></div>` : ""}
+    <div class="warm"><strong>${esc(d.avoidLabel)}</strong> ${esc(d.avoid)}</div>
+    ${d.specialistNote ? `<p class="muted small">${esc(d.specialistNote)}</p>` : ""}`,
 
-  const p6=`<section class="pg"><div class="rule"></div>
-    <h2>Zdania na Twoją sytuację</h2>
-    <p class="lead2">${sit.title}. Wybierz 5 zdań i ćwicz je codziennie, aż będą wychodzić bez namysłu. Reszta będzie czekać w kolejnych tygodniach.</p>
-    <div class="phr">${sit.items.map(x=>`<div class="phrase"><b>${x[0]}</b><span>${x[1]}</span></div>`).join("")}</div>
-    ${foot(6)}
-  </section>`;
+  plan90: d => `<h2>${esc(d.title)}</h2>
+    <p class="lead2">${esc(d.goal)} <span class="muted">${esc(d.disclaimer)}</span></p>
+    <div class="card" style="margin-bottom:.8em"><h3 style="margin-top:0">${esc(d.structureTitle)}</h3>${ul(d.structure)}</div>
+    ${d.months.map(m=>`<div class="mrow"><div><div class="when">${esc(m.label)}</div><div class="t">${esc(m.title)}</div></div>${ul(m.items)}</div>`).join("")}
+    <div class="dark">${esc(d.endGoal)}</div>
+    <h3>${esc(d.rhythmTitle)}</h3>
+    <div class="rhythm">${d.rhythm.map(r=>`<p>${boldLead(r)}</p>`).join("")}</div>`,
 
-  const p7=`<section class="pg"><div class="rule"></div>
-    <h2>Karta ratunkowa</h2>
-    <p class="lead2">Gdy się zatniesz, nie musisz milczeć. Wybierz reakcję, która pasuje do problemu.</p>
+  days1: d => `<h2>${esc(d.title)}</h2>
+    ${d.intro ? `<p class="lead2">${esc(d.intro)}</p>` : ""}
+    ${d.days.map(x=>dayHtml(x, d.labels)).join("")}`,
+
+  days2: d => `<h2>${esc(d.title)}</h2>
+    ${d.days.map(x=>dayHtml(x, d.labels)).join("")}
+    <div class="card" style="margin-top:.9em"><h3 style="margin-top:0">${esc(d.checkpoint.title)}</h3>
+      <p>${esc(d.checkpoint.body)}</p>${checks(d.checkpoint.items)}</div>`,
+
+  sentences: d => `<h2>${esc(d.title)}</h2>
+    <p class="lead2">${esc(d.intro)}</p>
+    <div class="phr">${d.sentences.map(s=>`<div class="phrase${s.priority?" pri":""}"><i>${s.priority?esc(d.priorityMark):s.n+"."}</i><div><b>${esc(s.en)}</b><span>${esc(s.pl)}</span></div></div>`).join("")}</div>`,
+
+  dialogue: d => `<h2>${esc(d.title)}</h2>
+    <p class="lead2">${esc(d.intro)}</p>
+    ${d.lines.map(l=>`<div class="dl ${l.who==="you"?"you":""}"><div class="who">${esc(l.label)}</div><div><b>${esc(l.en)}</b><span>${esc(l.pl)}</span></div></div>`).join("")}
+    <h3>${esc(d.roundsTitle)}</h3>
+    <div class="rounds">${d.rounds.map(r=>`<div><b>${r.n}. ${esc(r.name)}</b>${esc(r.body)}</div>`).join("")}</div>
+    <h3>${esc(d.questionsTitle)}</h3>
+    <p class="muted small" style="margin-bottom:.5em">${esc(d.questionsIntro)}${d.questionsEasyHint ? " " + esc(d.questionsEasyHint) : ""}</p>
+    <div class="qs">${d.questions.map(q=>`<div><i>${q.easy?esc(d.easyMark):""}</i><p style="margin:0"><b>${esc(q.en)}</b><span>${esc(q.pl)}</span></p></div>`).join("")}</div>`,
+
+  rescue: d => `<h2>${esc(d.title)}</h2>
+    <p class="lead2">${esc(d.intro)}</p>
+    <div class="grid2">${d.reactions.map(r=>`<div class="card"><h3>${esc(r.problem)}</h3><p>${r.lines.map(l=>`<b>${esc(l)}</b>`).join("<br>")}<br><span class="muted">${esc(r.tip)}</span></p></div>`).join("")}</div>
+    <h3 style="margin-top:1.6em">${esc(d.loopTitle)}</h3>
+    <ul>${d.loop.map(x=>`<li>${boldLead(x)}</li>`).join("")}</ul>
+    <h3 style="margin-top:1.4em">${esc(d.startersTitle)}</h3>
+    <ul>${d.starters.map(x=>`<li>${boldLead(x)}</li>`).join("")}</ul>`,
+
+  journal: d => `<h2>${esc(d.title)}</h2>
+    <p class="lead2">${esc(d.intro)}</p>
+    ${d.weekList.map(w=>`<div class="wk"><span class="n">${esc(w.label)}</span><span class="bx">${"<i></i>".repeat(7)}</span>${w.checkpoint?`<span class="tag">${esc(d.checkpointLabel)}</span>`:"<span></span>"}</div>`).join("")}
+    <h3>${esc(d.afterTitle)}</h3>
+    <table class="rt"><tr>${d.columns.map(c=>`<th>${esc(c)}</th>`).join("")}</tr>
+      ${d.weekList.filter(w=>w.checkpoint).map(w=>`<tr><td>${w.n}</td>${"<td></td>".repeat(d.columns.length-1)}</tr>`).join("")}</table>
+    <p class="muted small" style="margin-top:.6em">${esc(d.note)}</p>
+    <h3>${esc(d.criteriaTitle)}</h3>
+    ${checks(d.criteria)}`,
+
+  after14: d => `<h2>${esc(d.title)}</h2>
+    <p class="lead2">${esc(d.intro)}</p>
+    <h3>${esc(d.rhythmTitle)}</h3>
+    <p class="muted small" style="margin-bottom:.5em">${esc(d.rhythmIntro)}</p>
+    <div class="rh">${d.rhythm.map(r=>`<div><span class="cb"></span><b>${esc(r.name)}</b><p>${esc(r.text)}</p></div>`).join("")}</div>
+    <h3>${esc(d.monthsTitle)}</h3>
+    <p class="muted small" style="margin-bottom:.5em">${esc(d.monthsIntro)}</p>
+    <div class="rounds">${d.months.map(m=>`<div><span class="lbl">${esc(m.label)}</span><b>${esc(m.title)}</b></div>`).join("")}</div>
     <div class="grid2">
-      <div class="card"><h3>Nie wiem, jak to powiedzieć</h3><p><b>Let me put it simply…</b><br><b>What I mean is…</b><br><span class="muted">Uprość myśl: powiedz to krótszymi słowami.</span></p></div>
-      <div class="card"><h3>Brakuje mi słowa</h3><p><b>It’s a thing you use for…</b><br><b>It’s like… but bigger.</b><br><span class="muted">Opisz to, zamiast szukać nazwy.</span></p></div>
-      <div class="card"><h3>Nie zrozumiałem</h3><p><b>Could you say that again, please?</b><br><b>Could you speak a bit slower?</b><br><span class="muted">Poproś o powtórzenie. To zwykła uprzejmość.</span></p></div>
-      <div class="card"><h3>Potrzebuję chwili</h3><p><b>Let me think for a moment.</b><br><b>That’s a good question.</b><br><span class="muted">Chwila ciszy z takim zdaniem brzmi pewnie.</span></p></div>
+      <div class="card"><h3>${esc(d.materialsTitle)}</h3><p>${esc(d.materials)}</p></div>
+      <div class="card"><h3>${esc(d.checkTitle)}</h3><p>${esc(d.check)}</p></div>
     </div>
-    <h3 style="margin-top:24px">Słuchaj, odpowiedz, dopytaj</h3>
-    <ul><li><b>Słuchaj:</b> zrozum główną myśl, nie każde słowo.</li><li><b>Odpowiedz:</b> jednym zdaniem, np. „I work in marketing.”</li><li><b>Dopytaj:</b> oddaj głos rozmówcy: „And you?”, „What about you?”</li></ul>
-    <h3 style="margin-top:22px">Trzy początki zdań na start</h3>
-    <ul><li><b>Opowieść:</b> „So, what happened was…”</li><li><b>Opinia:</b> „In my opinion…”, „It looks like…”</li><li><b>Pytanie o zdanie rozmówcy:</b> „I’d like to hear your perspective on this.”</li></ul>
-    ${foot(7)}
-  </section>`;
+    <p style="margin-top:1em">${esc(d.retake)} <span class="booklink" data-link="retake">${esc(d.retakeLabel)}</span></p>`,
 
-  const weeks=[1,2,3,4,5,6,7,8,9,10,11,12], ctrl={1:1,4:1,8:1,12:1};
-  const p8=`<section class="pg"><div class="rule"></div>
-    <h2>Twój dziennik na 12 tygodni</h2>
-    <p class="lead2">Zaznaczaj dni, w których poćwiczyłeś. Celem jest regularność, a nie perfekcja.</p>
-    ${weeks.map(w=>`<div class="wk"><span class="n">Tydzień ${w}</span><span class="bx"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>${ctrl[w]?'<span class="tag">nagranie kontrolne</span>':'<span></span>'}</div>`).join("")}
-    <h3 style="margin-top:22px">Po każdym nagraniu kontrolnym zapisz</h3>
-    <table class="rt">
-      <tr><th>Tydzień</th><th>Co pomogło</th><th>Gdzie się zacięło</th><th>Jak wróciłem do rozmowy</th></tr>
-      <tr><td>1</td><td></td><td></td><td></td></tr>
-      <tr><td>4</td><td></td><td></td><td></td></tr>
-      <tr><td>8</td><td></td><td></td><td></td></tr>
-      <tr><td>12</td><td></td><td></td><td></td></tr>
-    </table>
-    <p class="muted small" style="margin-top:10px">Oceniasz rozmowę, a nie błędy: co zadziałało, gdzie zwolniłeś i jak udało się wrócić do wypowiedzi.</p>
-    ${foot(8)}
-  </section>`;
+  cta: d => `<h2>${esc(d.title)}</h2>
+    <p class="lead2">${esc(d.p1)}</p>
+    <p>${esc(d.p2)}</p>
+    <p>${esc(d.p3)}</p>
+    ${d.emphasis === "link"
+      ? `<p><span class="booklink" data-link="book">${esc(d.button)}</span></p>`
+      : `<div class="cta ${d.emphasis==="primary"?"primary":"secondary"}">
+          ${d.boxTitle ? `<h3>${esc(d.boxTitle)}</h3>` : ""}${d.boxBody ? `<p>${esc(d.boxBody)}</p>` : ""}
+          <span class="b" data-link="book">${esc(d.button)}</span></div>`}
+    <p class="muted small" style="margin-top:1.4em">${esc(d.closing)}</p>`
+};
 
-  const p9=`<section class="pg"><div class="rule"></div>
-    <h2>Kiedy samodzielna nauka przestaje wystarczać</h2>
-    <p class="lead2">Z tym planem da się zrobić naprawdę dużo samemu. Mówienia trudno jednak uczyć się zupełnie bez drugiej osoby: brakuje poprawki na bieżąco i rozmowy, w której nie wiesz, co usłyszysz.</p>
-    <p>Zanim sięgniesz po kurs, warto spróbować prostszych dróg: wymiana językowa z native speakerem, grupa konwersacyjna w Twoim mieście lub online, rozmowy po angielsku z kimś z pracy czy rodziny.</p>
-    <p>Jeśli po 4-6 tygodniach ćwiczysz regularnie, a nadal się blokujesz, albo po prostu wolisz mieć kogoś, kto Cię poprowadzi: ${esc(CONFIG.school)} prowadzi zajęcia mówienia online w małych grupach do 3 osób. Możesz umówić się na bezpłatną, 20-minutową rozmowę, podczas której ocenimy Twój poziom i powiemy wprost, czy zajęcia mają dla Ciebie sens.</p>
-    <div class="cta">
-      <h3>Bezpłatna rozmowa (20 minut)</h3>
-      <p>Bez zobowiązań. Nie musisz niczego kupować, żeby korzystać z tego planu.</p>
-      <span class="b" data-link="book">Umów rozmowę</span><span class="mail">${esc(CONFIG.contactEmail)}</span>
-    </div>
-    <p class="muted small">Powodzenia z pierwszym zdaniem.</p>
-    ${foot(9)}
-  </section>`;
+function buildDoc(plan){
+  const total = plan.pages.length;
+  const labels = {};
+  plan.pages[1].data.mapRows.forEach(r=>{ labels[r.page] = r.label; });
+  return plan.pages.map(p=>{
+    if (p.key === "cover") return `<section class="pg cover" data-key="cover">${PAGE.cover(p.data, plan)}</section>`;
+    const kick = labels[p.number] ? `<div class="kick2">${esc(labels[p.number])}</div>` : '<div class="kick2"></div>';
+    return `<section class="pg" data-key="${p.key}">${kick}${PAGE[p.key](p.data, plan)}
+      <div class="foot"><span>${esc(CONFIG.school)} · ${esc(plan.pages[0].data.title)}</span><span>${p.number} / ${total}</span></div></section>`;
+  });
+}
 
-  return [p1,p2,p3,p4,p5,p6,p7,p8,p9];
+/* Kontrola ucinania: .pg ma overflow:hidden, więc za długi tekst znikałby po cichu.
+   Najpierw zmniejszamy czcionkę strony (krok 0,5 px, nie mniej niż 10 px); jeśli to nie wystarcza, zwracamy listę stron z błędem. */
+function fitPages(root){
+  const bad = [];
+  root.querySelectorAll(".pg").forEach(pg=>{
+    pg.style.fontSize = "";
+    let fs = 13;
+    while (pg.scrollHeight > pg.clientHeight && fs > 10){ fs -= .5; pg.style.fontSize = fs + "px"; }
+    if (pg.scrollHeight > pg.clientHeight) bad.push(pg.dataset.key);
+  });
+  return bad;
 }
 
 /* ===== Podgląd na stronie startowej ===== */
-(function(){
-  const pages = buildDoc(compute(SAMPLE), SAMPLE);
-  $("fan").innerHTML = [pages[2],pages[5],pages[0]].map(p=>`<div class="mini">${p}</div>`).join("");
-})();
+function renderFan(){
+  try {
+    const pages = buildDoc(makePlan(SAMPLE));
+    $("fan").innerHTML = [pages[4],pages[8],pages[0]].map(p=>`<div class="mini">${p}</div>`).join("");
+    fitPages($("fan"));
+  } catch(e){ console.error(e); }
+}
 
 /* ===== Generowanie PDF ===== */
 let libsP = null;
@@ -823,102 +802,101 @@ function loadLibs(){
   if (!libsP) libsP = Promise.all(LIBS.map(loadScript)).catch(e=>{ libsP=null; throw e; });
   return libsP;
 }
-const absUrl = u => { try { return new URL(u, location.href).href; } catch(e){ return u; } };
 
-async function makePdf(onPage){
+async function makePdf(plan, onPage){
   await loadLibs();
-  if (document.fonts && document.fonts.ready) await document.fonts.ready;
   const pages = [...$("render").querySelectorAll(".pg")];
   const pdf = new window.jspdf.jsPDF({unit:"mm", format:"a4", orientation:"portrait", compress:true});
   const mm = 210/794, imgs = [];
+  const links = { book: plan.pages[13].data.bookingUrl, retake: CONFIG.quizUrl };
   for (let i=0;i<pages.length;i++){
     onPage(i+1, pages.length);
     const c = await html2canvas(pages[i], {scale:2, backgroundColor:"#ffffff", logging:false, windowWidth:1200});
     const data = c.toDataURL("image/jpeg", .9);
     if (i) pdf.addPage();
     pdf.addImage(data, "JPEG", 0, 0, 210, 297, undefined, "FAST");
-    // klikalny link w miejscu przycisku „Umów rozmowę”
-    const btn = pages[i].querySelector('[data-link="book"]');
-    if (btn){
-      const pr = pages[i].getBoundingClientRect(), br = btn.getBoundingClientRect();
-      pdf.link((br.left-pr.left)*mm, (br.top-pr.top)*mm, br.width*mm, br.height*mm, {url:absUrl(CONFIG.bookingUrl)});
-    }
+    // klikalne linki w miejscu przycisków („Umów rozmowę”, „Powtórz quiz”)
+    pages[i].querySelectorAll("[data-link]").forEach(el=>{
+      const url = links[el.dataset.link]; if (!url) return;
+      const pr = pages[i].getBoundingClientRect(), br = el.getBoundingClientRect();
+      pdf.link((br.left-pr.left)*mm, (br.top-pr.top)*mm, br.width*mm, br.height*mm, {url:absUrl(url)});
+    });
     imgs.push(data);
   }
-  pdf.setProperties({title:"Twoja mapa mówienia", author:CONFIG.school, subject:"Plan nauki mówienia po angielsku na 90 dni"});
+  pdf.setProperties({title:plan.pages[0].data.title, author:CONFIG.school, subject:"Plan nauki mówienia po angielsku na 90 dni"});
   return { blob: pdf.output("blob"), imgs };
+}
+
+function failBuild(e){
+  logError(e, state.a);
+  $("skel").hidden = true;
+  $("buildTitle").textContent = "Coś poszło nie tak";
+  $("buildMsg").textContent = "";
+  $("buildErr").hidden = false;
+  show("s-build");
 }
 
 async function finish(){
   setWave(1);
-  const res = state.res = compute(state.a);
-  $("render").innerHTML = buildDoc(res, state.a).join("");
   $("buildErr").hidden = true; $("skel").hidden = false;
   $("buildTitle").textContent = "Składam Twój plan";
+  $("buildMsg").textContent = "Przygotowuję strony PDF.";
   show("s-build");
+  let plan;
   try {
-    const out = await makePdf((n,t)=>{ $("buildMsg").textContent = `Przygotowuję stronę ${n} z ${t}.`; });
+    plan = state.plan = makePlan(state.a);
+    $("render").innerHTML = buildDoc(plan).join("");
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    const bad = fitPages($("render"));
+    if (bad.length) throw new Error("Tekst nie mieści się na stronach: " + bad.join(", "));
+  } catch(e){ return failBuild(e); }
+  try { history.replaceState(null, "", "?p=" + plan.code); } catch(e){}
+  try {
+    const out = await makePdf(plan, (n,t)=>{ $("buildMsg").textContent = `Przygotowuję stronę ${n} z ${t}.`; });
     if (state.pdfUrl) URL.revokeObjectURL(state.pdfUrl);
     state.pdfUrl = URL.createObjectURL(out.blob);
-    renderResult(res, out.imgs);
+    renderResult(plan, out.imgs);
     show("s-res");
-  } catch(e){
-    console.error(e);
-    $("skel").hidden = true;
-    $("buildTitle").textContent = "Coś poszło nie tak";
-    $("buildMsg").textContent = "";
-    $("buildErr").hidden = false;
-  }
+  } catch(e){ failBuild(e); }
 }
 
 /* ===== Widok wyniku ===== */
-function renderResult(res, imgs){
-  const a = state.a;
-  $("sum").innerHTML = sumHtml(res, a, true);
+function renderResult(plan, imgs){
+  $("sum").innerHTML = sumHtml(plan, true);
   $("pdfBtn").href = state.pdfUrl;
   $("pages").innerHTML = imgs.map((src,i)=>`<figure><img src="${src}" alt="Strona ${i+1} z ${imgs.length} planu" width="794" height="1123" loading="${i<2?'eager':'lazy'}"><figcaption>Strona ${i+1} z ${imgs.length}</figcaption></figure>`).join("");
-  try { history.replaceState(null, "", "?p=" + planCode(a)); } catch(e){}
-  $("beginnerBox").innerHTML = res.beginner ? beginnerHtml : "";
+  $("beginnerBox").innerHTML = plan.answers.level==="a2" ? beginnerHtml : "";
 }
 
-/* Podsumowanie wyniku (ekran formularza: 2 pozycje, ekran planu: 4) */
-function sumHtml(res, a, full){
-  const st = STAGES[res.stage-1];
+/* Podsumowanie wyniku (ekran formularza: 3 pozycje, ekran planu: więcej) */
+function sumHtml(plan, full){
+  const s = plan.summary, a = plan.answers, R = CONTENT.ui.result;
   const rows = [
-    ["ph-map-trifold","Twój etap",`Etap ${st.n} z 5: ${st.name}`],
-    ["ph-brain","Główna blokada",BLOCK[res.blocker].title]
+    ["ph-map-trifold", tpl(R.stageLine, s)],
+    ["ph-brain", tpl(R.blockageLine, s)],
+    ["ph-flag", tpl(R.goalLine, s)]
   ];
-  if (full) rows.push(["ph-chat-circle-text","Twoja sytuacja",SIT[a.situation].title], ["ph-clock","Czas na ćwiczenia",`${DAILY[a.time]} dziennie`]);
-  return rows.map(([ic,l,v])=>`<div><i class="ph ${ic}"></i><p style="margin:0"><span>${l}</span><b>${esc(v)}</b></p></div>`).join("");
-}
-const beginnerHtml = `<div class="alert"><strong>Przygotowujemy kurs dla początkujących.</strong> Damy znać, gdy ruszy.</div>`;
-
-/* ===== Link do planu (?p=...) ===== */
-const PLAN_KEYS = ["situation","mind","level","react","length","goal","time"];
-const optLabel = (id,val)=>{ const q=QUESTIONS.find(x=>x.id===id), o=q&&q.opts.find(x=>x[0]===val); return o?o[1]:""; };
-const planCode = a => PLAN_KEYS.map(k=>a[k]).join("-");
-function parsePlan(code){
-  const parts = String(code||"").split("-");
-  if (parts.length!==PLAN_KEYS.length) return null;
-  const a = {};
-  for (let i=0;i<PLAN_KEYS.length;i++){
-    if (!optLabel(PLAN_KEYS[i], parts[i])) return null;
-    a[PLAN_KEYS[i]] = parts[i];
+  if (full){
+    rows.push(["ph-chat-circle-text", CONTENT.situations[a.situation].label]);
+    rows.push(["ph-clock", CONTENT.time[a.time].label]);
   }
-  return a;
+  return rows.map(([ic,v])=>`<div><i class="ph ${ic}"></i><p style="margin:0"><b>${esc(v)}</b></p></div>`).join("");
 }
-const planUrl = a => CONFIG.quizUrl + "?p=" + planCode(a);
+// DO POTWIERDZENIA z właścicielem: czy baner dla osób z poziomem A2 zostaje
+const beginnerHtml = `<div class="alert"><strong>Przygotowujemy kurs dla początkujących.</strong> Damy znać, gdy ruszy.</div>`;
 
 /* ===== Wysyłka do MailerLite ===== */
 const ML = CONFIG.mailerlite;
 const mlReady = !!(ML.accountId && ML.formId);
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const optLabel = (qid, val) => { const o = QuizLogic.questionOptions(CONTENT, qid, {}).find(x=>x.value===val); return o ? o.label : ""; };
 function mailMsg(txt, kind){ const m=$("mailMsg"); m.textContent=txt; m.className="msg"+(kind?" "+kind:""); }
 const SEND_LABEL = '<i class="ph ph-paper-plane-tilt"></i>Wyślij mi link do planu';
 function setSending(on){ $("mailBtn").disabled = on; $("mailBtn").innerHTML = on ? "Wysyłam…" : SEND_LABEL; }
 function goMail(){
-  state.res = compute(state.a);
-  $("sumMail").innerHTML = sumHtml(state.res, state.a, false);
+  try { state.plan = makePlan(state.a); }
+  catch(e){ return failBuild(e); }
+  $("sumMail").innerHTML = sumHtml(state.plan, false);
   setSending(false); mailMsg("");
   show("s-mail");
   setTimeout(()=>$("nameInput").focus(), 50);
@@ -928,7 +906,7 @@ function showSent(name, email){
   $("sentMsg").textContent = CONFIG.doubleOptIn
     ? `Wysłaliśmy wiadomość na ${email}. Kliknij w niej link potwierdzający, a zaraz potem dostaniesz swój plan. Jeśli jej nie widzisz, zajrzyj do folderów Oferty i Spam.`
     : `Wysłaliśmy go na ${email}. Kliknij „Otwórz mój plan” w mailu, a zobaczysz swój plan i pobierzesz go jako PDF. Jeśli maila nie ma w ciągu kilku minut, zajrzyj do folderów Oferty i Spam.`;
-  $("beginnerSent").innerHTML = state.res.beginner ? beginnerHtml : "";
+  $("beginnerSent").innerHTML = state.plan.answers.level==="a2" ? beginnerHtml : "";
   show("s-sent");
 }
 $("mailBack").addEventListener("click", ()=>{ show("s-q"); renderQ(); });
@@ -940,20 +918,24 @@ $("mailForm").addEventListener("submit", async e=>{
   const name = $("nameInput").value.trim(), email = $("mailInput").value.trim();
   if (!name){ $("nameInput").setAttribute("aria-invalid","true"); $("nameInput").focus(); return mailMsg("Wpisz swoje imię.","err"); }
   $("nameInput").removeAttribute("aria-invalid");
-  if (!EMAIL_RE.test(email)){ $("mailInput").setAttribute("aria-invalid","true"); $("mailInput").focus(); return mailMsg("Wpisz poprawny adres e-mail.","err"); }
+  if (!EMAIL_RE.test(email)){ $("mailInput").setAttribute("aria-invalid","true"); $("mailInput").focus(); return mailMsg(CONTENT.ui.errors.email,"err"); }
   $("mailInput").removeAttribute("aria-invalid");
-  if (!$("mailConsent").checked) return mailMsg("Zaznacz zgodę, żebyśmy mogli wysłać Ci plan.","err");
-  const a = state.a, res = state.res;
+  if (!$("mailConsent").checked) return mailMsg(CONTENT.ui.errors.consent,"err");
+  state.name = name;
+  const plan = state.plan, a = plan.answers;
   const f = new URLSearchParams();
   f.append("fields[email]", email);
   f.append("fields[name]", name);
-  f.append("fields[plan_url]", planUrl(a));
-  f.append("fields[etap]", String(res.stage));
-  f.append("fields[blokada]", BLOCK[res.blocker].title);
-  f.append("fields[sytuacja]", SIT[a.situation].title);
+  f.append("fields[plan_url]", CONFIG.quizUrl + "?p=" + plan.code);
+  f.append("fields[etap]", String(plan.stage));
+  f.append("fields[blokada]", ML_BLOCK[a.mind]);
+  f.append("fields[sytuacja]", ML_SIT[a.situation]);
   f.append("fields[cel]", optLabel("goal", a.goal));
-  f.append("fields[czas]", DAILY[a.time]);
-  f.append("fields[lektor]", optLabel("interest", a.interest) || "");
+  f.append("fields[czas]", ML_TIME[a.time]);
+  f.append("fields[lektor]", optLabel("interest", a.interest));
+  f.append("fields[rozmowca]", ML_PARTNER[a.partner]);
+  f.append("fields[blokada2]", a.mind2 === "none" ? "brak" : ML_BLOCK[a.mind2]);
+  f.append("fields[poziom]", ML_LEVEL[a.level]);
   f.append("ml-submit","1"); f.append("anticsrf","true");
   if (!mlReady){
     // Tryb pokazowy (brak ID MailerLite w CONFIG): nic nie wysyłamy, od razu pokazujemy plan
@@ -989,12 +971,8 @@ $("printBtn").addEventListener("click", ()=>{
 });
 $("restartBtn").addEventListener("click", ()=>{
   try { history.replaceState(null, "", location.pathname); } catch(e){}
-  state.i=0; state.a={}; show("s-q"); renderQ();
+  startQuiz();
 });
-
-/* Otwarcie z linku z maila: od razu składamy plan */
-const fromLink = parsePlan(new URLSearchParams(location.search).get("p"));
-if (fromLink){ state.a = fromLink; finish(); }
 
 /* ===== Teksty z konfiguracji ===== */
 $("brandName").textContent = CONFIG.school;
@@ -1003,6 +981,34 @@ $("footMail").textContent = CONFIG.contactEmail;
 $("footMail").href = "mailto:" + CONFIG.contactEmail;
 $("bookBtn").href = CONFIG.bookingUrl;
 $("bookBtn2").href = CONFIG.bookingUrl;
+
+/* ===== Start: wczytanie treści, potem quiz albo plan z linku (?p=) ===== */
+function introMsg(txt){ $("introMsg").textContent = txt; $("introMsg").hidden = false; }
+// Treść z quiz-content.js (działa też z dysku, file://); fetch tylko jako zapas
+(window.QUIZ_CONTENT ? Promise.resolve(window.QUIZ_CONTENT)
+  : fetch("quiz-content.json").then(r=>{ if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })).then(c=>{
+  const v = QuizLogic.validateContent(c);
+  if (!v.ok) throw new Error("Niepoprawna treść quizu (" + c.meta.contentVersion + "): " + v.errors.join("; "));
+  CONTENT = c;
+  QUESTIONS = c.questions.slice().sort((x,y)=>x.order-y.order);
+  $("introLead").textContent = c.ui.intro.lead;
+  $("backLbl").textContent = c.ui.buttons.back;
+  $("skipBtn").textContent = c.ui.buttons.skip;
+  $("startBtn").disabled = false;
+  renderFan();
+  const p = new URLSearchParams(location.search).get("p");
+  if (p){
+    const a = QuizLogic.decodeAnyCode(p);
+    if (a){ state.a = a; finish(); }
+    else {
+      try { history.replaceState(null, "", location.pathname); } catch(e){}
+      introMsg(c.ui.errors.restore);
+    }
+  }
+}).catch(e=>{
+  console.error("[quiz] nie wczytano treści", e);
+  introMsg("Nie udało się wczytać quizu. Odśwież stronę i spróbuj ponownie.");
+});
 </script>
 </body>
 </html>

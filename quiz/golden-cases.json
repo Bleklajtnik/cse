@@ -1,0 +1,10 @@
+[
+  {"id":"G1","note":"Etap 1, A2, brak rozmówcy, 5 min, telefon","answers":{"situation":"calls","goal":"confidence","react":"1","length":"2","mind":"translator","mind2":"none","level":"a2","partner":"no","time":"5","interest":"alone"}},
+  {"id":"G2","note":"Etap 2, dwie blokady, 12 min, spotkania (przykład z wersji roboczej)","answers":{"situation":"meetings","goal":"work","react":"2","length":"3","mind":"translator","mind2":"perfectionist","level":"b1","partner":"yes","time":"12","interest":"soon"}},
+  {"id":"G3","note":"Etap 3, 20 min, rozmówca do znalezienia, podróże","answers":{"situation":"travel","goal":"travel","react":"3","length":"3","mind":"searcher","mind2":"none","level":"b2","partner":"maybe","time":"20","interest":"later"}},
+  {"id":"G4","note":"Etap 4, zamrożenie pod presją, spotkania","answers":{"situation":"meetings","goal":"work","react":"4","length":"4","mind":"freeze","mind2":"none","level":"b2","partner":"yes","time":"12","interest":"soon"}},
+  {"id":"G5","note":"Etap 4, brak praktyki (wariant alternatywny), brak rozmówcy","answers":{"situation":"smalltalk","goal":"people","react":"4","length":"4","mind":"practice","mind2":"none","level":"b2","partner":"no","time":"5","interest":"later"}},
+  {"id":"G6","note":"Sprzeczne sygnały: react 4, length 1","answers":{"situation":"foreigners","goal":"work","react":"4","length":"1","mind":"perfectionist","mind2":"freeze","level":"b1","partner":"maybe","time":"12","interest":"soon"}},
+  {"id":"G7","note":"A2 ograniczone do etapu 2 mimo 4/4","answers":{"situation":"calls","goal":"work","react":"4","length":"4","mind":"freeze","mind2":"none","level":"a2","partner":"yes","time":"20","interest":"soon"}},
+  {"id":"G8","note":"Etap 2, poziom nieznany, praktyka + tłumacz","answers":{"situation":"smalltalk","goal":"people","react":"2","length":"2","mind":"practice","mind2":"translator","level":"unknown","partner":"maybe","time":"5","interest":"later"}}
+]
