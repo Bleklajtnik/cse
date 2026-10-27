@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cambridge School of English – Przełam barierę językową w 90 dni</title>
+    <title>Cambridge School – Przełam barierę językową w 90 dni</title>
     <meta
       name="description"
       content="Rozumiesz angielski, ale milczysz gdy ktoś do Ciebie mówi? Metoda Komunikatywna przełamuje blokadę mówienia w 90 dni. Maks. 3 osoby w grupie. Gwarancja zwrotu po 2 sesjach."
@@ -14,18 +14,18 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://cambridgeschool.pl" />
-    <meta property="og:title" content="Cambridge School of English – Przełam barierę językową w 90 dni" />
+    <meta property="og:title" content="Cambridge School – Przełam barierę językową w 90 dni" />
     <meta
       property="og:description"
       content="Rozumiesz angielski, ale milczysz gdy ktoś do Ciebie mówi? Metoda Komunikatywna przełamuje blokadę mówienia w 90 dni. Maks. 3 osoby w grupie. Gwarancja zwrotu po 2 sesjach."
     />
     <meta property="og:image" content="https://cambridgeschool.pl/assets/og-image.png" />
     <meta property="og:locale" content="pl_PL" />
-    <meta property="og:site_name" content="Cambridge School of English" />
+    <meta property="og:site_name" content="Cambridge School" />
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Cambridge School of English – Przełam barierę językową w 90 dni" />
+    <meta name="twitter:title" content="Cambridge School – Przełam barierę językową w 90 dni" />
     <meta
       name="twitter:description"
       content="Rozumiesz angielski, ale milczysz gdy ktoś do Ciebie mówi? Metoda Komunikatywna przełamuje blokadę mówienia w 90 dni. Maks. 3 osoby w grupie. Gwarancja zwrotu po 2 sesjach."
@@ -37,7 +37,7 @@
       {
         "@context": "https://schema.org",
         "@type": "EducationalOrganization",
-        "name": "Cambridge School of English",
+        "name": "Cambridge School",
         "url": "https://cambridgeschool.pl",
         "email": "marek@cambridgeschool.pl",
         "founder": {
@@ -200,10 +200,13 @@
         opacity: 1;
         transform: none;
       }
+      /* Girlanda jest pierwszą warstwą, więc leży nad przyciemnieniem. Na wąskich ekranach ma min. 1000px
+         szerokości (przycięta po bokach), żeby flagi nie były malutkie. */
       .hero-bg {
         background:
+          url('assets/girlanda1.png') center top / max(100%, 1000px) auto no-repeat,
           linear-gradient(135deg, rgba(26, 39, 68, 0.55) 0%, rgba(36, 50, 96, 0.55) 55%, rgba(28, 53, 88, 0.55) 100%),
-          url('assets/igitlo.jpg') center center / cover no-repeat;
+          url('assets/tlo1.jpg') center center / cover no-repeat;
       }
       .hero-section {
         min-height: 100dvh;
@@ -260,20 +263,49 @@
           left: calc(50% - 11px);
         }
       }
+      /* Desktop: hero wypełnia ekran pod nagłówkiem (65px). Treść jest wyśrodkowana w miejscu pod girlandą
+         (flagi zajmują ok. 8% szerokości), z marginesem od dołu (lg:pb-14). */
       @media (min-width: 1024px) {
-        .hero-section {
-          min-height: 600px;
+        /* podwójna klasa, żeby wygrać z sm:pt-20 z Tailwinda */
+        .hero-bg.hero-section {
+          min-height: calc(100dvh - 65px);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding-top: calc(100vw * 0.075);
+          padding-bottom: 2rem;
+        }
+      }
+      /* Niskie ekrany laptopów: ciaśniej, żeby całe hero mieściło się na ekranie */
+      @media (min-width: 1024px) and (max-height: 760px) {
+        .hero-bg.hero-section {
+          padding-top: calc(100vw * 0.07);
+          padding-bottom: 1.25rem;
+        }
+        .hero-section h1 {
+          font-size: 2.5rem;
+          margin-bottom: 0.75rem;
+        }
+        .hero-section .badge-pill {
+          margin-bottom: 0.75rem;
+        }
+        .hero-section p.text-lg {
+          font-size: 1rem;
+          margin-bottom: 1.25rem;
+        }
+        /* zdjęcie Marka nie wyższe niż miejsce pod girlandą */
+        .hero-section .hero-flagi-desktop {
+          max-height: min(520px, calc(100dvh - 65px - 100vw * 0.08 - 1rem));
         }
       }
       .hero-flagi-desktop {
         max-height: clamp(320px, 38vw, 520px);
-        right: 2%;
+        right: calc(6% + 60px);
       }
       @media (min-width: 1280px) {
         .hero-flagi-desktop {
           max-height: 520px;
-          right: 15%;
-          transform: translateX(90px); /* przesunięcie w prawo tylko na szerokich ekranach (węższe ucinałyby flagę) */
+          right: calc(15% + 60px);
         }
       }
       .badge-pill {
@@ -444,7 +476,7 @@
         <a href="#" class="flex items-center gap-3">
           <img src="assets/logo.png" alt="CSE" class="h-9 w-9 rounded-xl" onerror="this.style.display = 'none'" />
           <div class="leading-tight">
-            <p class="font-bold text-navy text-sm">Cambridge School of English</p>
+            <p class="font-bold text-navy text-sm">Cambridge School</p>
             <p class="text-gold text-xs font-medium">Program Online</p>
           </div>
         </a>
@@ -452,19 +484,17 @@
           <a href="#dlaczego" class="hover:text-navy transition-colors">Metoda</a>
           <a href="#jak-dziala" class="hover:text-navy transition-colors">Jak działa</a>
           <a href="#opinie" class="hover:text-navy transition-colors">Opinie</a>
-          <a href="#cennik" class="hover:text-navy transition-colors">Cennik</a>
-          <a href="#faq" class="hover:text-navy transition-colors">FAQ</a>
-          <a href="quiz/index.html" class="text-gold hover:text-navy transition-colors">Quiz</a>
-        </nav>
+          <a href="#cennik" class="hover:text-navy transition-colors">Oferta</a>
+          <a href="#faq" class="hover:text-navy transition-colors">FAQ</a>        </nav>
         <a href="#kontakt" class="btn-gold !py-2.5 !px-5 !text-sm">Bezpłatna rozmowa</a>
       </div>
     </header>
     <!-- HERO -->
-    <section class="hero-bg hero-section relative px-4 sm:px-6 pt-14 pb-10 sm:pt-20 lg:pb-0 overflow-hidden">
+    <section class="hero-bg hero-section relative px-4 sm:px-6 pt-14 pb-10 sm:pt-20 overflow-hidden">
       <!-- hero_flagi - desktop: zakotwiczone do dołu sekcji -->
       <img
-        src="assets/hero_flagi.png"
-        alt="Flagi USA i UK – nauczanie angielskiego w Cambridge School of English"
+        src="assets/hero_zalozyciel_web.png"
+        alt="Marek Jaczyński – założyciel Cambridge School"
         class="absolute bottom-0 w-auto hidden lg:block hero-flagi-desktop"
         style="
           z-index: 2;
@@ -487,8 +517,8 @@
             </h1>
             <!-- hero_flagi - mobile: w flow przed paragrafem -->
             <img
-              src="assets/hero_flagi.png"
-              alt="Flagi USA i UK – nauczanie angielskiego w Cambridge School of English"
+              src="assets/hero_zalozyciel_web.png"
+              alt="Marek Jaczyński – założyciel Cambridge School"
               class="block lg:hidden w-auto mx-auto mb-6"
               loading="lazy"
               style="max-height: 280px; object-fit: contain; filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.3))"
@@ -623,7 +653,7 @@
             "Jeśli masz problem z przełamaniem bariery językowej - ta szkoła jest właśnie dla Ciebie."
           </p>
           <footer class="mt-2 text-xs text-slate-400 font-semibold">
-            - Mariusz W., kursant Cambridge School of English
+            - Mariusz W., kursant Cambridge School
           </footer>
         </blockquote>
       </div>
@@ -672,7 +702,7 @@
             zajęciach.
           </p>
           <p>
-            Cambridge School of English to szkoła, gdzie od pierwszej minuty pierwszych zajęć mówisz. Nie słuchasz. Nie
+            Cambridge School to szkoła, gdzie od pierwszej minuty pierwszych zajęć mówisz. Nie słuchasz. Nie
             przepisujesz. Mówisz - w grupie maksymalnie <strong class="text-navy">3 osób</strong>, pod okiem specjalisty
             z ponad <strong class="text-navy">20-letnim doświadczeniem</strong> w prowadzeniu szkoleń z angielskiego dla
             największych korporacji w południowej Polsce, oraz prowadzeniu szkoły językowej
@@ -1723,6 +1753,7 @@
             </ul>
             <a
               href="#kontakt"
+              data-pakiet="Minimum (grupowy)"
               class="block text-center border-2 border-navy text-navy font-bold py-3 px-6 rounded-xl hover:bg-navy hover:text-white transition-all text-sm mb-2"
               >CHCĘ ZACZĄĆ MÓWIĆ - WYBIERAM GRUPĘ</a
             >
@@ -1822,6 +1853,7 @@
             </ul>
             <a
               href="#kontakt"
+              data-pakiet="Optimum (hybrydowy)"
               class="block text-center bg-gold text-navy font-black py-3 px-6 rounded-xl hover:bg-goldlt transition-colors text-sm mb-2"
               style="box-shadow: 0 6px 24px rgba(201, 168, 76, 0.4)"
               >CHCĘ HYBRYDĘ - ZACZYNAM TERAZ</a
@@ -1903,6 +1935,7 @@
             </ul>
             <a
               href="#kontakt"
+              data-pakiet="Maksimum (indywidualny)"
               class="block text-center border-2 border-navy text-navy font-bold py-3 px-6 rounded-xl hover:bg-navy hover:text-white transition-all text-sm mb-2"
               >CHCĘ PROGRAM INDYWIDUALNY - ZACZYNAM</a
             >
@@ -2235,19 +2268,19 @@
                 metodzie. I ta metoda właśnie się zmieniła."
               </p>
             </div>
-            <p class="text-gold font-bold text-sm">- Marek Jaczyński, Dyrektor Cambridge School of English</p>
+            <p class="text-gold font-bold text-sm">- Marek Jaczyński, Dyrektor Cambridge School</p>
           </div>
           <!-- Naklejka z właścicielem + dymek z podpisem -->
           <div class="flex justify-center">
             <div class="founder-sticker">
               <img
                 src="assets/naklejkaigi.png"
-                alt="Marek Jaczyński – założyciel i dyrektor Cambridge School of English"
+                alt="Marek Jaczyński – założyciel i dyrektor Cambridge School"
                 loading="lazy"
               />
               <div class="founder-bubble">
                 <p class="font-bold text-navy text-base leading-tight">Marek Jaczyński</p>
-                <p class="text-slate-500 text-sm mt-0.5">Dyrektor · Cambridge School of English</p>
+                <p class="text-slate-500 text-sm mt-0.5">Dyrektor · Cambridge School</p>
               </div>
             </div>
           </div>
@@ -2391,6 +2424,8 @@
         <!-- Jedna karta: formularz + kalendarz (przy rezerwacji karta się poszerza, bo Cal.com potrzebuje miejsca) -->
         <div id="bk-card" class="max-w-3xl mx-auto bg-white/8 border border-white/15 rounded-3xl p-8 sm:p-10 text-left">
         <form id="contact-form" novalidate>
+          <!-- Pakiet kliknięty w cenniku (ustawia skrypt), idzie do Formspree i do ukrytego pola "pakiet" w Cal.com -->
+          <input type="hidden" id="cf-pakiet" name="Pakiet" value="Nie wybrano" />
           <!-- Krok 1: dane kontaktowe -->
           <div id="bk-s1">
             <div class="grid sm:grid-cols-2 gap-4 mb-1">
@@ -2610,12 +2645,12 @@
         <div class="flex items-center gap-3">
           <img src="assets/logo.png" alt="CSE" class="h-8 w-8 rounded-lg" onerror="this.style.display = 'none'" />
           <div>
-            <p class="text-white/70 text-sm font-bold">Cambridge School of English</p>
+            <p class="text-white/70 text-sm font-bold">Cambridge School</p>
             <p class="text-white/30 text-xs">Program Online · cambridgeschool.pl</p>
           </div>
         </div>
         <p class="text-white/20 text-xs">
-          © 2026 Cambridge School of English. Wszelkie prawa zastrzeżone. ·
+          © 2026 Cambridge School. Wszelkie prawa zastrzeżone. ·
           <a href="polityka-prywatnosci.html" class="underline hover:text-white/60">Polityka prywatności</a>
         </p>
       </div>
@@ -2657,7 +2692,7 @@
     </script>
     <script>
       (function () {
-        const CAL_LINK = 'antoni-jaczynski-onaxpx/rozmowa-kwalifikacyjna';
+        const CAL_LINK = 'marek-jaczynski-j99ozu/rozmowa-kwalifikacyjna';
         const CAL_NS = 'rozmowa';
         const FORMSPREE_URL = 'https://formspree.io/f/xwlkqgrk';
 
@@ -2667,6 +2702,11 @@
         const phoneEl = $('cf-phone');
         const emailEl = $('cf-email');
         const msgEl = $('cf-msg');
+        const pakietEl = $('cf-pakiet');
+        // Klik w przycisk pakietu zapamiętuje wybór (ostatni kliknięty wygrywa)
+        document.querySelectorAll('[data-pakiet]').forEach((a) =>
+          a.addEventListener('click', () => (pakietEl.value = a.dataset.pakiet)),
+        );
         const s1 = $('bk-s1');
         const s2 = $('bk-s2');
         const calendar = $('bk-calendar');
@@ -2783,6 +2823,7 @@
               notes: msgEl.value.trim(),
               attendeePhoneNumber: phone,
               phone: phone,
+              pakiet: pakietEl.value,
               ...answers,
             },
           });

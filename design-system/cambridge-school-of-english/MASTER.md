@@ -6,7 +6,7 @@
 
 ---
 
-**Project:** Cambridge School of English
+**Project:** Cambridge School
 **Generated:** 2026-06-24 20:19:49
 **Category:** Service Landing Page
 
