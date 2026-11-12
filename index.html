@@ -2480,7 +2480,7 @@
               <h3 class="font-serif text-xl font-bold text-navy">Michelle</h3>
               <p class="text-gold text-sm font-semibold mt-0.5">Native speakerka angielskiego</p>
               <p class="text-slate-500 text-sm leading-relaxed mt-3">
-                Ukończyła lingwistykę i psychologię, więc rozumie, skąd bierze się stres przy mówieniu i jak go
+                Ukończyła lingwistykę i psychologię na UNISA w RPA, więc rozumie, skąd bierze się stres przy mówieniu i jak go
                 rozbroić. Od 2017 roku uczy angielskiego kursantów z Polski, Chin, Kuwejtu i Tajlandii.
               </p>
               <p class="text-slate-500 text-sm leading-relaxed mt-2">
@@ -2490,7 +2490,7 @@
               <dl class="teacher-facts">
                 <div><dt>Od 2017</dt><dd>uczy angielskiego</dd></div>
                 <div><dt>120 h</dt><dd>certyfikat TEFL</dd></div>
-                <div><dt>Studia</dt><dd>lingwistyka i psychologia</dd></div>
+                <div><dt>UNISA</dt><dd>lingwistyka i psychologia</dd></div>
               </dl>
             </div>
           </article>
@@ -2698,14 +2698,14 @@
           <div id="bk-s1">
             <div class="grid sm:grid-cols-2 gap-4 mb-1">
               <div class="mb-3">
-              <label for="cf-name" class="block text-white/50 text-xs font-semibold uppercase tracking-widest mb-1.5">Imię i nazwisko <span class="text-red-400">*</span></label>
-              <input id="cf-name" type="text" name="name" autocomplete="name" placeholder="Jan Kowalski" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-gold focus:bg-white/15 transition-all" />
-              <p id="cf-name-err" class="text-red-400 text-xs mt-1 hidden">Podaj imię i nazwisko.</p>
+              <label for="cf-name" class="block text-white/50 text-xs font-semibold uppercase tracking-widest mb-1.5">Imię <span class="text-red-400">*</span></label>
+              <input id="cf-name" type="text" name="name" autocomplete="given-name" maxlength="40" placeholder="Jan" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-gold focus:bg-white/15 transition-all" />
+              <p id="cf-name-err" class="text-red-400 text-xs mt-1 hidden">Podaj swoje imię (same litery).</p>
             </div>
               <div class="mb-3">
               <label for="cf-phone" class="block text-white/50 text-xs font-semibold uppercase tracking-widest mb-1.5">Telefon <span class="text-red-400">*</span></label>
-              <input id="cf-phone" type="tel" name="phone" autocomplete="tel" placeholder="+48 000 000 000" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-gold focus:bg-white/15 transition-all" />
-              <p id="cf-phone-err" class="text-red-400 text-xs mt-1 hidden">Podaj numer telefonu (min. 9 cyfr).</p>
+              <input id="cf-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" value="+48 " placeholder="+48 600 123 456" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-gold focus:bg-white/15 transition-all" />
+              <p id="cf-phone-err" class="text-red-400 text-xs mt-1 hidden">Podaj poprawny numer telefonu, np. 600 123 456 lub +48 600 123 456.</p>
             </div>
             </div>
             <div class="mb-3">
@@ -2713,6 +2713,16 @@
               <input id="cf-email" type="email" name="email" autocomplete="email" placeholder="jan@gmail.com" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-gold focus:bg-white/15 transition-all" />
               <p id="cf-email-err" class="text-red-400 text-xs mt-1 hidden">Podaj poprawny adres e-mail.</p>
             </div>
+            <!-- Zgoda marketingowa: osobna, nieobowiązkowa i domyślnie niezaznaczona (art. 398 PKE, art. 7 RODO).
+                 Nie da się jej zastąpić zdaniem "przechodząc dalej akceptujesz". Do Formspree trafia tylko zaznaczona. -->
+            <label class="flex items-start gap-3 mt-1 cursor-pointer">
+              <input type="checkbox" name="Zgoda marketingowa" value="Tak" class="mt-0.5 w-4 h-4 shrink-0 accent-[#c9a84c]" />
+              <span class="text-white/55 text-xs leading-relaxed">
+                Chcę otrzymywać e-mailem, SMS-em lub telefonicznie informacje o kursach, promocjach i nowych grupach
+                Cambridge School. Zgoda jest dobrowolna i mogę ją w każdej chwili wycofać.
+                <span class="text-white/35">(opcjonalnie)</span>
+              </span>
+            </label>
           </div>
           <!-- Krok 2: pytania kwalifikacyjne - rozwijają się same, gdy ktoś zacznie wypełniać ostatnie pole danych -->
           <div id="bk-s2" class="hidden mt-6 pt-6 border-t border-white/10 transition-opacity duration-500">
@@ -2875,9 +2885,10 @@
             <button id="bk-next2" type="submit" class="btn-gold w-full justify-center">Dalej - wybierz termin →</button>
           </div>
           <p id="bk-privacy" class="text-white/40 text-xs text-center mt-4 leading-relaxed">
-            Administratorem danych jest Cambridge School Marek Jaczyński. Dane z formularza wykorzystamy wyłącznie do
-            kontaktu w sprawie rozmowy i zajęć.
-            <a href="polityka-prywatnosci.html" class="underline hover:text-white/70">Polityka prywatności</a>
+            Wypełniając formularz i przechodząc dalej, akceptujesz
+            <a href="polityka-prywatnosci.html" class="underline hover:text-white/70">politykę prywatności</a> i zgadzasz
+            się na kontakt telefoniczny i mailowy w sprawie bezpłatnej rozmowy i zajęć. Administratorem danych jest
+            Cambridge School Marek Jaczyński.
           </p>
         </form>
         <!-- Krok 3: kalendarz Cal.com (w kroku 1 widoczny jako zablokowany, w kroku 2 schowany) -->
@@ -2990,11 +3001,29 @@
         const ERR_BORDER = 'border-red-500';
         const OK_BORDER = 'border-white/20';
 
-        function validateEmail(v) {
-          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+        // Samo imię: litery (także polskie), dopuszczalny myślnik i apostrof, np. "Anna-Maria", "O'Neil"
+        function validateName(v) {
+          return /^\p{L}+(?:['-]\p{L}+)*$/u.test(v.trim()) && v.trim().length >= 2;
         }
+        // Domena musi mieć kropkę i końcówkę z min. 2 liter; bez spacji, podwójnych kropek i kropek na brzegach
+        function validateEmail(v) {
+          const s = v.trim();
+          return (
+            /^[A-Za-z0-9._%+\-]+@[A-Za-z0-9\-]+(?:\.[A-Za-z0-9\-]+)*\.[A-Za-z]{2,}$/.test(s) &&
+            !/\.\./.test(s) &&
+            !/^\.|\.@|@\.|@-/.test(s)
+          );
+        }
+        // Bez kierunkowego: dokładnie 9 cyfr (polski numer). Z +XX lub 00XX: 9-15 cyfr łącznie z kierunkowym.
         function validatePhone(v) {
-          return /^[\d\s\+\-\(\)]{9,}$/.test(v.trim()) && v.replace(/\D/g, '').length >= 9;
+          const s = v.trim();
+          if (!/^\+?[\d\s\-()]+$/.test(s)) return false;
+          const digits = s.replace(/\D/g, '');
+          // Domyślny prefiks +48: polski numer to dokładnie 9 cyfr po kierunkowym
+          if (/^\+\s*48/.test(s)) return digits.length === 11;
+          if (s.startsWith('+')) return digits.length >= 9 && digits.length <= 15;
+          if (digits.startsWith('00')) return digits.length >= 11 && digits.length <= 17;
+          return digits.length === 9;
         }
         // Cal.com oczekuje numeru w formacie międzynarodowym (+48...)
         function normalizePhone(v) {
@@ -3011,7 +3040,7 @@
         }
 
         const checks = [
-          [nameEl, (v) => v.trim().length >= 2],
+          [nameEl, validateName],
           [phoneEl, validatePhone],
           [emailEl, validateEmail],
         ];
@@ -3131,10 +3160,19 @@
 
         // Pytania rozwijają się same, gdy ktoś zacznie pisać w ostatnim pustym polu (w dowolnej kolejności),
         // i chowają się z powrotem, gdy któreś pole znowu będzie puste (zaznaczone odpowiedzi zostają)
+        // Telefon ma domyślnie wpisane "+48 ", więc sam prefiks liczy się jako puste pole
+        const isBlank = (f) => (f === phoneEl ? f.value.replace(/[\s+]/g, '') === '48' : false) || !f.value.trim();
+        // Wklejony numer z własnym +48 lub 0048 nie dubluje domyślnego prefiksu
+        phoneEl.addEventListener('input', () => {
+          const fixed = phoneEl.value.replace(/^\+48\s*(?:\+48|0048)\s*/, '+48 ');
+          if (fixed === phoneEl.value) return;
+          phoneEl.value = fixed;
+          if (validatePhone(fixed)) setError(phoneEl, false);
+        });
         let expanded = false;
         checks.forEach(([el]) =>
           el.addEventListener('input', () => {
-            const filled = checks.every(([f]) => f.value.trim());
+            const filled = checks.every(([f]) => !isBlank(f));
             if (filled === expanded) return;
             expanded = filled;
             if (!filled) return showStep(1, false);
