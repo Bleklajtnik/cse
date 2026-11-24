@@ -1,0 +1,40 @@
+# Netlify: przy każdym deployu generuje CSS Tailwinda (assets/css/site.<hash>.css) i podmienia odwołania w HTML.
+[build]
+  command = "npm run build"
+  publish = "."
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Długi cache tylko dla plików z hashem w nazwie (zmiana treści = nowa nazwa, więc cache nigdy nie jest nieaktualny).
+# HTML i pozostałe pliki zostają z domyślnym nagłówkiem Netlify (zawsze sprawdzane), więc zmiany widać od razu.
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Stare adresy z poprzedniej wersji strony, które nadal są w wynikach Google (zamiast błędu 404 prowadzą do sekcji strony głównej).
+[[redirects]]
+  from = "/kontakt"
+  to = "/#kontakt"
+  status = 301
+
+[[redirects]]
+  from = "/o-nas"
+  to = "/#lektorzy"
+  status = 301
+
+[[redirects]]
+  from = "/metoda"
+  to = "/#dlaczego"
+  status = 301

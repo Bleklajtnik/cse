@@ -8,47 +8,17 @@
     <!-- Strona po rezerwacji: nie indeksujemy jej w Google (liczy wyłącznie zapisy) -->
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" type="image/png" href="assets/logo.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Czcionki z własnej domeny (@font-face w assets/css/site.*.css); preload tych z pierwszego ekranu -->
+    <link rel="preload" href="assets/fonts/inter-latin.3100e775.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/playfair-display-latin.e0c764a8.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/playfair-display-latin-ext.42898ad4.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- Tło pierwszej sekcji (pierwszy ekran) -->
+    <link rel="preload" as="image" href="assets/img/igitlo-1920.4d0dce42.webp" fetchpriority="high" />
+    <!-- Piksel Meta po zgodzie na cookies. 'Schedule' = jedna rezerwacja rozmowy. -->
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: { navy: '#1a2744', navylt: '#243260', navydark: '#111b33', gold: '#c9a84c', goldlt: '#d9bc72' },
-            fontFamily: { serif: ['Playfair Display', 'Georgia', 'serif'], sans: ['Inter', 'system-ui', 'sans-serif'] },
-          },
-        },
-      };
+      window.csPixelEvents = ['Schedule'];
     </script>
-    <!-- Piksel Facebooka (Meta) WYŁĄCZONY - tak jak na stronie głównej. Przy starcie reklam włączyć razem z banerem
-         zgody na ciasteczka. Tutaj dodatkowo zdarzenie 'Schedule' = jedna rezerwacja rozmowy.
-    <script>
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = '2.0';
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '1050306314003867');
-      fbq('track', 'PageView');
-      fbq('track', 'Schedule');
-    </script>
-    koniec wyłączonego piksela Facebooka -->
+    <script src="assets/pixel-consent.js" defer></script>
 
     <style>
       * {
@@ -58,9 +28,9 @@
         scroll-behavior: smooth;
       }
       body {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Inter', 'Inter Fallback', 'Inter Fallback Android', sans-serif;
         background: #fff;
-        color: #1a2744;
+        color: rgb(var(--c-navy));
         margin: 0;
       }
       .fade-in {
@@ -76,8 +46,8 @@
       }
       .hero-bg {
         background:
-          linear-gradient(135deg, rgba(26, 39, 68, 0.55) 0%, rgba(36, 50, 96, 0.55) 55%, rgba(28, 53, 88, 0.55) 100%),
-          url('assets/igitlo.jpg') center center / cover no-repeat;
+          linear-gradient(135deg, rgb(var(--c-navy) / 0.55) 0%, rgb(var(--c-navylt) / 0.55) 55%, rgb(var(--c-ovl) / 0.55) 100%),
+          url('assets/img/igitlo-1920.4d0dce42.webp') center center / cover no-repeat;
       }
       .hero-section {
         min-height: 100dvh;
@@ -86,9 +56,9 @@
          reszta wypełniona tym samym granatem co tło zdjęcia */
       .kontakt-bg {
         background:
-          linear-gradient(135deg, rgba(26, 39, 68, 0.55) 0%, rgba(36, 50, 96, 0.55) 55%, rgba(28, 53, 88, 0.55) 100%),
-          url('assets/igitlo.jpg') center bottom / 100% auto no-repeat,
-          #272852;
+          linear-gradient(135deg, rgb(var(--c-navy) / 0.55) 0%, rgb(var(--c-navylt) / 0.55) 55%, rgb(var(--c-ovl) / 0.55) 100%),
+          url('assets/img/igitlo-1920.4d0dce42.webp') center bottom / 100% auto no-repeat,
+          rgb(var(--c-fill));
       }
       /* Historia twórcy: zdjęcie jako naklejka + dymek z podpisem */
       .founder-sticker {
@@ -154,9 +124,9 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        background: rgba(201, 168, 76, 0.15);
-        border: 1px solid rgba(201, 168, 76, 0.4);
-        color: #c9a84c;
+        background: rgb(var(--c-gold) / 0.15);
+        border: 1px solid rgb(var(--c-gold) / 0.4);
+        color: rgb(var(--c-gold));
         font-size: 0.7rem;
         font-weight: 700;
         letter-spacing: 0.1em;
@@ -168,19 +138,19 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: #c9a84c;
-        color: #1a2744;
+        background: rgb(var(--c-gold));
+        color: rgb(var(--c-navy));
         font-weight: 800;
         border-radius: 12px;
         padding: 15px 28px;
         font-size: 0.95rem;
         transition: all 0.2s;
-        box-shadow: 0 6px 24px rgba(201, 168, 76, 0.4);
+        box-shadow: 0 6px 24px rgb(var(--c-gold) / 0.4);
       }
       .btn-gold:hover {
-        background: #d9bc72;
+        background: rgb(var(--c-goldlt));
         transform: translateY(-2px);
-        box-shadow: 0 10px 32px rgba(201, 168, 76, 0.55);
+        box-shadow: 0 10px 32px rgb(var(--c-gold) / 0.55);
       }
       .btn-ghost-w {
         display: inline-flex;
@@ -203,17 +173,17 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: #1a2744;
+        background: rgb(var(--c-navy));
         color: #fff;
         font-weight: 700;
         border-radius: 12px;
         padding: 14px 26px;
         font-size: 0.9rem;
         transition: all 0.2s;
-        box-shadow: 0 4px 20px rgba(26, 39, 68, 0.25);
+        box-shadow: 0 4px 20px rgb(var(--c-navy) / 0.25);
       }
       .btn-navy:hover {
-        background: #243260;
+        background: rgb(var(--c-navylt));
         transform: translateY(-2px);
       }
       .feat-card {
@@ -223,11 +193,11 @@
         padding: 28px 22px;
         text-align: center;
         transition: all 0.25s;
-        box-shadow: 0 2px 12px rgba(26, 39, 68, 0.05);
+        box-shadow: 0 2px 12px rgb(var(--c-navy) / 0.05);
       }
       .feat-card:hover {
-        border-color: rgba(201, 168, 76, 0.4);
-        box-shadow: 0 12px 36px rgba(26, 39, 68, 0.1);
+        border-color: rgb(var(--c-gold) / 0.4);
+        box-shadow: 0 12px 36px rgb(var(--c-navy) / 0.1);
         transform: translateY(-4px);
       }
       .icon-wrap {
@@ -245,14 +215,14 @@
         border: 1.5px solid #f0ece3;
         border-radius: 20px;
         padding: 26px;
-        box-shadow: 0 2px 8px rgba(26, 39, 68, 0.05);
+        box-shadow: 0 2px 8px rgb(var(--c-navy) / 0.05);
       }
       .section-lbl {
         font-size: 0.7rem;
         font-weight: 800;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: #c9a84c;
+        color: rgb(var(--c-gold));
         display: block;
         margin-bottom: 6px;
       }
@@ -274,8 +244,8 @@
         width: 48px;
         height: 48px;
         border-radius: 50%;
-        background: #1a2744;
-        color: #c9a84c;
+        background: rgb(var(--c-navy));
+        color: rgb(var(--c-gold));
         font-weight: 800;
         font-size: 1.1rem;
         display: flex;
@@ -287,18 +257,18 @@
         width: 128px;
         height: 128px;
         border-radius: 50%;
-        background: conic-gradient(#c9a84c, #d9bc72 50%, #c9a84c);
+        background: conic-gradient(rgb(var(--c-gold)), rgb(var(--c-goldlt)) 50%, rgb(var(--c-gold)));
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 8px 40px rgba(201, 168, 76, 0.5);
+        box-shadow: 0 8px 40px rgb(var(--c-gold) / 0.5);
         flex-shrink: 0;
         border: 4px solid #fff;
       }
       .star {
         display: inline-block;
-        color: #c9a84c;
+        color: rgb(var(--c-gold));
       }
       .chip {
         background: #fff;
@@ -310,12 +280,21 @@
         gap: 10px;
       }
     </style>
+    <!-- Tailwind skompilowany przy buildzie (npm run build), po inline <style> - ta sama kolejność co z CDN -->
+    <link rel="stylesheet" href="assets/css/site.58f21f77.css" />
   </head>
   <body>
     <header class="sticky top-0 z-50 bg-white border-b border-slate-100 shadow-sm">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-3">
-          <img src="assets/logo.png" alt="CSE" class="h-9 w-9 rounded-xl" onerror="this.style.display = 'none'" />
+          <img
+            src="assets/img/logo-108.61738a21.webp"
+            alt="CSE"
+            width="36"
+            height="36"
+            class="h-9 w-9 rounded-xl"
+            onerror="this.style.display = 'none'"
+          />
           <div class="leading-tight">
             <p class="font-bold text-navy text-sm">Cambridge School</p>
             <p class="text-gold text-xs font-medium">Program Online</p>
@@ -436,7 +415,16 @@
         </div>
         <!-- FILM: podmień src na docelowy film (np. powitanie od Marka) -->
         <div class="rounded-3xl overflow-hidden shadow-lg border border-gold/20 bg-navy">
-          <video controls preload="metadata" playsinline class="w-full block">
+          <!-- preload="none" + plakat (pierwsza klatka); width/height rezerwują miejsce 16:9 -->
+          <video
+            controls
+            preload="none"
+            playsinline
+            poster="assets/img/opinia-poster-1280.63ba5816.webp"
+            width="1920"
+            height="1080"
+            class="w-full block"
+          >
             <source src="assets/opinia.mp4" type="video/mp4" />
             Twoja przeglądarka nie obsługuje odtwarzacza wideo.
           </video>
@@ -840,7 +828,15 @@
     <footer class="bg-navydark border-t border-white/5 py-8 px-4">
       <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div class="flex items-center gap-3">
-          <img src="assets/logo.png" alt="CSE" class="h-8 w-8 rounded-lg" onerror="this.style.display = 'none'" />
+          <img
+            src="assets/img/logo-108.61738a21.webp"
+            alt="CSE"
+            width="32"
+            height="32"
+            loading="lazy"
+            class="h-8 w-8 rounded-lg"
+            onerror="this.style.display = 'none'"
+          />
           <div>
             <p class="text-white/70 text-sm font-bold">Cambridge School</p>
             <p class="text-white/30 text-xs">Program Online · cambridgeschool.pl</p>

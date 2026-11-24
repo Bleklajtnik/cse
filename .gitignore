@@ -19,3 +19,6 @@ skills-lock.json
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Zależności npm (build CSS)
+node_modules/

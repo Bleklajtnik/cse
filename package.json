@@ -1,0 +1,16 @@
+{
+  "name": "cambridgeschool-landing",
+  "private": true,
+  "description": "Statyczna strona cambridgeschool.pl - build generuje CSS Tailwinda (zamiast cdn.tailwindcss.com)",
+  "scripts": {
+    "build": "node scripts/build-css.mjs",
+    "images": "node scripts/optimize-images.mjs"
+  },
+  "devDependencies": {
+    "sharp": "0.33.5",
+    "tailwindcss": "3.4.17"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
