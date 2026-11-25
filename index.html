@@ -629,7 +629,7 @@
       }
     </style>
     <!-- Tailwind skompilowany przy buildzie (npm run build), po inline <style> - ta sama kolejność co z CDN -->
-    <link rel="stylesheet" href="assets/css/site.58f21f77.css" />
+    <link rel="stylesheet" href="assets/css/site.09d2f533.css" />
   </head>
   <body>
     <!-- NAV -->
@@ -3203,6 +3203,41 @@
                     <span
                       class="block h-full border border-white/20 rounded-xl px-4 py-2.5 text-sm text-white/80 cursor-pointer transition-all hover:border-white/40 hover:bg-white/5 peer-checked:bg-gold peer-checked:border-gold peer-checked:text-navy peer-checked:font-semibold peer-focus-visible:ring-2 peer-focus-visible:ring-gold/60"
                       >Powyżej 900 zł</span
+                    >
+                  </label>
+                </div>
+                <p class="bk-q-err text-red-400 text-xs mt-1.5 hidden">Wybierz jedną odpowiedź.</p>
+              </fieldset>
+              <!-- Źródło leada. data-cal="zrodlo" = identyfikator pytania w Cal.com (ukryte pole o tej nazwie) -->
+              <fieldset class="bk-q mb-6" data-name="Skąd o nas wiesz" data-cal="zrodlo">
+                <legend class="text-white font-semibold text-sm mb-3">7. Skąd o nas wiesz?</legend>
+                <div class="grid sm:grid-cols-2 gap-2">
+                  <label class="block">
+                    <input type="radio" name="Skąd o nas wiesz" value="Google" class="peer sr-only" />
+                    <span
+                      class="block h-full border border-white/20 rounded-xl px-4 py-2.5 text-sm text-white/80 cursor-pointer transition-all hover:border-white/40 hover:bg-white/5 peer-checked:bg-gold peer-checked:border-gold peer-checked:text-navy peer-checked:font-semibold peer-focus-visible:ring-2 peer-focus-visible:ring-gold/60"
+                      >Google</span
+                    >
+                  </label>
+                  <label class="block">
+                    <input type="radio" name="Skąd o nas wiesz" value="Facebook lub Instagram" class="peer sr-only" />
+                    <span
+                      class="block h-full border border-white/20 rounded-xl px-4 py-2.5 text-sm text-white/80 cursor-pointer transition-all hover:border-white/40 hover:bg-white/5 peer-checked:bg-gold peer-checked:border-gold peer-checked:text-navy peer-checked:font-semibold peer-focus-visible:ring-2 peer-focus-visible:ring-gold/60"
+                      >Facebook lub Instagram</span
+                    >
+                  </label>
+                  <label class="block">
+                    <input type="radio" name="Skąd o nas wiesz" value="Od znajomego" class="peer sr-only" />
+                    <span
+                      class="block h-full border border-white/20 rounded-xl px-4 py-2.5 text-sm text-white/80 cursor-pointer transition-all hover:border-white/40 hover:bg-white/5 peer-checked:bg-gold peer-checked:border-gold peer-checked:text-navy peer-checked:font-semibold peer-focus-visible:ring-2 peer-focus-visible:ring-gold/60"
+                      >Od znajomego</span
+                    >
+                  </label>
+                  <label class="block">
+                    <input type="radio" name="Skąd o nas wiesz" value="Inne" class="peer sr-only" />
+                    <span
+                      class="block h-full border border-white/20 rounded-xl px-4 py-2.5 text-sm text-white/80 cursor-pointer transition-all hover:border-white/40 hover:bg-white/5 peer-checked:bg-gold peer-checked:border-gold peer-checked:text-navy peer-checked:font-semibold peer-focus-visible:ring-2 peer-focus-visible:ring-gold/60"
+                      >Inne</span
                     >
                   </label>
                 </div>
